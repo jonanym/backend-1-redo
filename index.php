@@ -25,9 +25,7 @@
         <article>
             <h1>Uppg 1</h1>
             <p>Xampp server info</p>
-        </article>
-
-        <?php
+            <?php
         // uppg 1 - Superglobals
         // phpinfo(); sök här för efter uppg 1 info
         print($_SERVER['REMOTE_USER']);
@@ -35,7 +33,9 @@
         // konkatenering med punkt, märk att PHP kod producerar HTML resurser
         print("<p>Servern snurrar på port: " . $serverPort . "<p>" );
         ?>
+        </article>
 
+        
         <article>
             <h1>Uppg 2</h1>
             <p>Tid och datum</p>

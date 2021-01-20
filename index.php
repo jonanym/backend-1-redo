@@ -37,10 +37,34 @@ print("<p>Servern snurrar på port: " . $serverPort . "<p>");
 
 
         <article>
-            <h1>Uppg 2</h1>
+            <h2>Uppg 2</h2>
             <p>Tid och datum</p>
+            <?php
+            print( "<p>Det är den " . date("d") . " nde dagen idag</p>" );
+            print( "<p>Klockan är ". date("h:i:s") . " just nu</p>");
+            print( "<p>Det är den " . date("m") . "nde månaden idag</p>");
+            $manader = array("Januari", "Februari", "Mars");
+            $manad = date("m");
+            // tyvärr  verkar $manad vara en sträng inte en nummer
+            // type cast str till int:
+            $manadInt = (int)$manad;
+            print( "<p>På svenska heter den första månaden: " .$manader[$manadInt] );
+            ?>
         </article>
-        <p>Skolan börjar snart!</p>
+
+        <article>
+        <h2>Uppg 3</h2>
+        <form action="index.php" method="get">
+            Dag: <input type="text" name="dag"><br>
+            Månad: <input type="text" name="manad"><br>
+            <input type="submit"><br>
+        <?php
+        $dag = $_GET["dag"];
+        print("Du vill veta hur länge det är till " . $dag );
+
+        ?>
+
+        </article>
     </div>
 </body>
 

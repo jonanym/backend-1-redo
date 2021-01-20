@@ -40,6 +40,7 @@
             <h1>Uppg 2</h1>
             <p>Tid och datum</p>
         </article>
+        <p>Skolan börjar snart!</p>
     </div>
 </body>
 

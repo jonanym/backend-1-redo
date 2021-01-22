@@ -28,10 +28,15 @@
             <?php
 // uppg 1 - Superglobals
 // phpinfo(); sök här för efter uppg 1 info
-print($_SERVER['REMOTE_USER']);
+//phpinfo();
+$serverName = $_SERVER['SERVER_NAME'];
+print("Serverns namn är: " .$serverName ."<p>");
+$userName = $_SERVER['REMOTE_USER'];
+print("Användarnamnet: " . $userName . "<p>");
 $serverPort = $_SERVER['SERVER_PORT'];
 // konkatenering med punkt, märk att PHP kod producerar HTML resurser
 print("<p>Servern snurrar på port: " . $serverPort . "<p>");
+
 ?>
         </article>
 
@@ -40,16 +45,22 @@ print("<p>Servern snurrar på port: " . $serverPort . "<p>");
             <h2>Uppg 2</h2>
             <p>Tid och datum</p>
             <?php
-            print( "<p>Det är den " . date("d") . " nde dagen idag</p>" );
-            print( "<p>Klockan är ". date("h:i:s") . " just nu</p>");
-            print( "<p>Det är den " . date("m") . "nde månaden idag</p>");
-            $manader = array("Januari", "Februari", "Mars");
-            $manad = date("m");
-            // tyvärr  verkar $manad vara en sträng inte en nummer
-            // type cast str till int:
-            $manadInt = (int)$manad;
-            print( "<p>På svenska heter den första månaden: " .$manader[$manadInt] );
-            ?>
+print("<p>Klockan är " . date("H:i:s") . " just nu</p>");
+print("<p>Datumet i dag: " .date("d") . "/" .date("m"). "/20" .date("y"). "</p>");
+$manader = array("Januari", "Februari", "Mars", "April", "Maj", "Juni", "July", "Augusti", "september", "Oktober", "November");
+$manad = date("m");
+// tyvärr  verkar $manad vara en sträng inte en nummer
+// type cast str till int:
+$manadInt = (int)$manad-1;
+print("<p>På svenska heter den första månaden: " . $manader[$manadInt]);
+$veckodag = date("w");
+$veckodagInt = (int)$veckodag;
+$veckoDag = array("Söndag","Måndag","Tisdag","Onsdag","Torsdag","Fredag","Lördag");
+print("<p>I dag är det " .$veckoDag[$veckodagInt]);
+
+
+//print("<p> I dag är det " ..)
+?>
         </article>
 
         <article>
@@ -59,10 +70,10 @@ print("<p>Servern snurrar på port: " . $serverPort . "<p>");
             Månad: <input type="text" name="manad"><br>
             <input type="submit"><br>
         <?php
-        $dag = $_GET["dag"];
-        print("Du vill veta hur länge det är till " . $dag );
+$dag = $_GET["dag"];
+print("Du vill veta hur länge det är till " . $dag);
 
-        ?>
+?>
 
         </article>
     </div>

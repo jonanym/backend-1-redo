@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php 
+
+session_start();
+include "functions.php"
+
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -12,14 +18,8 @@
 <body>
     <!-- Containern har max bredd 800px -->
     <div id="container">
-        <nav>
-            <!-- Logo och meny finns i nav -->
-            <ul>
-                <a id="current" href="../home/">Home</a>
-                <a href="../projekt1/">Projekt 1</a>
-                <a href="../projekt2/">Projekt 2</a>
-            </ul>
-        </nav>
+
+        <?php include "navbar.php" ?>
 
         <!-- Artiklar placerar sig snyggt efter varann -->
         <article>
@@ -63,34 +63,37 @@ print("<p>I dag är det " . $veckoDag[$veckodagInt]);
         </article>
 
         <article>
-        <h2>Uppg 3</h2>
-        <form action="index.php" method="get">
-            Dag: <input type="text" name="dag"><br>
-            Månad: <input type="text" name="manad"><br>
-            <input type="submit"><br>
-        <?php
+            <h2>Uppg 3</h2>
+            <form action="index.php" method="get">
+                Dag: <input type="text" name="dag"><br>
+                Månad: <input type="text" name="manad"><br>
+                <input type="submit"><br>
+
+                <?php
 
         // Kolla om man tryckt submit
         if (isset($_REQUEST["dag"]) && isset($_REQUEST["manad"])){
            $dag = $_GET["dag"];
            $manad = $_GET["manad"];
-            print("Du vill veta hur länge det är till " . $dag); 
+           $datum = date("d.m.Y", mktime(0,0,0,$manad,$dag,2020));
+           
+           print("<p>Till den: " . date("d.m.Y", mktime(0,0,0,$manad,$dag,2021)) ." är det: "); 
         }
         ?>
 
         </article>
 
         <article>
-        <h2>Uppg 4</h2>
-        <form action="index.php" method="get">
-        Användarnamn: <input type="text" name="username"><br>
-        E-mail: <input type="text" name="email"><br>
-        <input type="Registrera dig!">
-        </form>
-        <?php
+            <h2>Uppg 4</h2>
+            <form action="index.php" method="get">
+                Användarnamn: <input type="text" name="username"><br>
+                E-mail: <input type="text" name="email"><br>
+                <input type="submit" value="Registrera dig">
+            </form>
+            <?php
         if ( isset($_REQUEST['username']) && isset($_REQUEST['email'])) {
             //uppg 4 - skapa confirmation email
-            $username = $_GET['username'];
+            $username = test_input($_GET['username'] ) ;
             print($username);
         }
         ?>
@@ -114,6 +117,18 @@ if(isset($_COOKIE["username"])){
 
 ?>
 
+        </article>
+
+
+        <article>
+            <h2>Uppg 6 </h2>
+            <?php
+        // uppg 6 - spara användardata på servern
+            $_SESSION['user'] = "jonathan";
+            print("<p>Endast Dennis har tillgång till Dark Web</>");
+            print("<a href = 'darkweb.php'> DARK WEB</a>");
+
+        ?>
         </article>
     </div>
 </body>

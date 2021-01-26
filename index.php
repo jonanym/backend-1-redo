@@ -30,7 +30,7 @@
 // phpinfo(); sök här för efter uppg 1 info
 //phpinfo();
 $serverName = $_SERVER['SERVER_NAME'];
-print("Serverns namn är: " .$serverName ."<p>");
+print("Serverns namn är: " . $serverName . "<p>");
 $userName = $_SERVER['REMOTE_USER'];
 print("Användarnamnet: " . $userName . "<p>");
 $serverPort = $_SERVER['SERVER_PORT'];
@@ -46,18 +46,17 @@ print("<p>Servern snurrar på port: " . $serverPort . "<p>");
             <p>Tid och datum</p>
             <?php
 print("<p>Klockan är " . date("H:i:s") . " just nu</p>");
-print("<p>Datumet i dag: " .date("d") . "/" .date("m"). "/20" .date("y"). "</p>");
+print("<p>Datumet i dag: " . date("d") . "/" . date("m") . "/20" . date("y") . "</p>");
 $manader = array("Januari", "Februari", "Mars", "April", "Maj", "Juni", "July", "Augusti", "september", "Oktober", "November");
 $manad = date("m");
 // tyvärr  verkar $manad vara en sträng inte en nummer
 // type cast str till int:
-$manadInt = (int)$manad-1;
+$manadInt = (int) $manad - 1;
 print("<p>På svenska heter den första månaden: " . $manader[$manadInt]);
 $veckodag = date("w");
-$veckodagInt = (int)$veckodag;
-$veckoDag = array("Söndag","Måndag","Tisdag","Onsdag","Torsdag","Fredag","Lördag");
-print("<p>I dag är det " .$veckoDag[$veckodagInt]);
-
+$veckodagInt = (int) $veckodag;
+$veckoDag = array("Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag");
+print("<p>I dag är det " . $veckoDag[$veckodagInt]);
 
 //print("<p> I dag är det " ..)
 ?>
@@ -70,8 +69,48 @@ print("<p>I dag är det " .$veckoDag[$veckodagInt]);
             Månad: <input type="text" name="manad"><br>
             <input type="submit"><br>
         <?php
-$dag = $_GET["dag"];
-print("Du vill veta hur länge det är till " . $dag);
+
+        // Kolla om man tryckt submit
+        if (isset($_REQUEST["dag"]) && isset($_REQUEST["manad"])){
+           $dag = $_GET["dag"];
+           $manad = $_GET["manad"];
+            print("Du vill veta hur länge det är till " . $dag); 
+        }
+        ?>
+
+        </article>
+
+        <article>
+        <h2>Uppg 4</h2>
+        <form action="index.php" method="get">
+        Användarnamn: <input type="text" name="username"><br>
+        E-mail: <input type="text" name="email"><br>
+        <input type="Registrera dig!">
+        </form>
+        <?php
+        if ( isset($_REQUEST['username']) && isset($_REQUEST['email'])) {
+            //uppg 4 - skapa confirmation email
+            $username = $_GET['username'];
+            print($username);
+        }
+        ?>
+        </article>
+
+        <article>
+            <h2>Uppg 5</h2>
+            <?php
+// uppg 5 - ge användaren en cookie
+$cookie_name = "username";
+$cookie_value = "nymajona";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/");
+
+//Kolla ifall användaren har en cookie
+if(isset($_COOKIE["username"])){
+    print("<p>Välkommen " . $cookie_value . "!</p>");
+}
+
+
+
 
 ?>
 

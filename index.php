@@ -73,8 +73,8 @@ print("<p>I dag är det " . $veckoDag[$veckodagInt]);
 
         // Kolla om man tryckt submit
         if (isset($_REQUEST["dag"]) && isset($_REQUEST["manad"])){
-           $dag = $_GET["dag"];
-           $manad = $_GET["manad"];
+           $dag = $_REQUEST["dag"];
+           $manad = $_REQUEST["manad"];
            $datum = date("d.m.Y", mktime(0,0,0,$manad,$dag,2020));
            
            print("<p>Till den: " . date("d.m.Y", mktime(0,0,0,$manad,$dag,2021)) ." är det: "); 
@@ -93,7 +93,7 @@ print("<p>I dag är det " . $veckoDag[$veckodagInt]);
             <?php
         if ( isset($_REQUEST['username']) && isset($_REQUEST['email'])) {
             //uppg 4 - skapa confirmation email
-            $username = test_input($_GET['username'] ) ;
+            $username = test_input($_REQUEST['username'] ) ;
             print($username);
         }
         ?>
@@ -111,6 +111,9 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/");
 if(isset($_COOKIE["username"])){
     print("<p>Välkommen " . $cookie_value . "!</p>");
 }
+else{
+    print("<p>DU är första gången på sidan</p>");
+}
 
 
 
@@ -122,13 +125,55 @@ if(isset($_COOKIE["username"])){
 
         <article>
             <h2>Uppg 6 </h2>
-            <?php
+            <form action="index.php" method="get">
+                Login: <input type="text" name="login"><br>
+                Password: <input type="text" name="password"><br>
+                <input type="submit" value="Logga in">
+                <?php
         // uppg 6 - spara användardata på servern
-            $_SESSION['user'] = "jonathan";
-            print("<p>Endast Dennis har tillgång till Dark Web</>");
-            print("<a href = 'darkweb.php'> DARK WEB</a>");
+            $login = test_input($_REQUEST["login"]);
+            $passwd = test_input($_REQUEST["password"]);
+            
+            if ($login == "jonathan")
+            {
+                // "Session abc123 == $_SESSION['user']=jonathan";
+                $_SESSION['user'] = "jonathan";
+            print("<p>Endast Jonathan har tillgång till Dark Web</>");
+            }
 
+            else if($login == "nymajona")
+            {
+                $_SESSION['user'] = "nymajona";
+            }
+
+            else 
+            {
+                $_SESSION['user'] = "skurk";
+                print("<p>Inga hemlisar för skurkar</p>");
+                //$_SESSION['user'] = "intejonathan";
+            }
+            print("<a href = 'darkweb.php'> DARK WEB</a>");
         ?>
+        </article>
+
+        <article>
+            <h2>Uppg 7</h2>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+            Select image to upload:
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="submit"
+
+        </article>
+
+        <article>
+            <h2>Uppg 8 - besöksräknare</h2>
+            <?php
+            $myfile = fopen("besok.log", "a+") or die("Unable to open file!");
+            fwrite($myfile, "Jonathan var här kl " . time() . "\n");
+            fclose($myfile);
+?>
+
+
         </article>
     </div>
 </body>

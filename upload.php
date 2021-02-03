@@ -21,6 +21,10 @@ include "functions.php"
 
         <?php include "navbar.php" ?>
 
+        <article>
+        <h2>Uppg 7</h2>
+        </article>
+
     </div>
 </body>
 

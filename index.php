@@ -52,7 +52,6 @@ $manad = date("m");
 // tyvärr  verkar $manad vara en sträng inte en nummer
 // type cast str till int:
 $manadInt = (int) $manad - 1;
-print("<p>På svenska heter den första månaden: " . $manader[$manadInt]);
 $veckodag = date("w");
 $veckodagInt = (int) $veckodag;
 $veckoDag = array("Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag");
@@ -83,6 +82,8 @@ print("<p>I dag är det " . $veckoDag[$veckodagInt]);
 
         </article>
 
+
+
         <article>
             <h2>Uppg 4</h2>
             <form action="index.php" method="get">
@@ -94,29 +95,40 @@ print("<p>I dag är det " . $veckoDag[$veckodagInt]);
         if ( isset($_REQUEST['username']) && isset($_REQUEST['email'])) {
             //uppg 4 - skapa confirmation email
             $username = test_input($_REQUEST['username'] ) ;
-            print($username);
+            $email = $_REQUEST['email'];
+            $lösenord = Lösenord();
+            //print($username);
+            print($lösenord);
         }
+
+        $to = "$email";
+        $subject = "Ditt lösenord";
+        $txt = "Hej, Ditt användarnamn är $username och ditt lösenord är $lösenord";
+        $headers = "From: lösenord@arcada.com";
+
+        mail($to,$subject,$txt,$headers);
         ?>
         </article>
+
+
+
+
 
         <article>
             <h2>Uppg 5</h2>
             <?php
-// uppg 5 - ge användaren en cookie
-$cookie_name = "username";
-$cookie_value = "nymajona";
-setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/");
+                // uppg 5 - ge användaren en cookie
+                $cookie_name = "username";
+                $cookie_value = "nymajona";
+                setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/");
 
-//Kolla ifall användaren har en cookie
-if(isset($_COOKIE["username"])){
-    print("<p>Välkommen " . $cookie_value . "!</p>");
-}
-else{
-    print("<p>DU är första gången på sidan</p>");
-}
-
-
-
+                //Kolla ifall användaren har en cookie
+                if(isset($_COOKIE["username"])){
+                print("<p>Välkommen " . $cookie_value . "!</p>");
+                }
+                else{
+                print("<p>DU är första gången på sidan</p>");
+                }
 
 ?>
 
@@ -134,35 +146,41 @@ else{
             $login = test_input($_REQUEST["login"]);
             $passwd = test_input($_REQUEST["password"]);
             
-            if ($login == "jonathan")
+            if ($login == "jonathan" && $passwd == "superhemlis")
             {
                 // "Session abc123 == $_SESSION['user']=jonathan";
                 $_SESSION['user'] = "jonathan";
-            print("<p>Endast Jonathan har tillgång till Dark Web</>");
+                $_SESSION['passwd'] = "superhemlis";
+            //print("<p>Endast Jonathan har tillgång till Dark Web</>");
             }
 
             else if($login == "nymajona")
             {
                 $_SESSION['user'] = "nymajona";
             }
-
+            else if($login == "admin")
+            {
+                $_SESSION['user'] = "admin";
+            }
             else 
             {
                 $_SESSION['user'] = "skurk";
-                print("<p>Inga hemlisar för skurkar</p>");
+                //print("<p>Inga hemlisar för skurkar</p>");
                 //$_SESSION['user'] = "intejonathan";
             }
-            print("<a href = 'darkweb.php'> DARK WEB</a>");
+            print("<br><br><a href = 'darkweb.php'> DARK WEB</a><br>");
+            print("<a href = 'admin.php'> Admin</a>");
+
         ?>
         </article>
 
         <article>
             <h2>Uppg 7</h2>
             <form action="upload.php" method="post" enctype="multipart/form-data">
-            Select image to upload:
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit"
-
+                Select image to upload:
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="submit" value="Upload Image" name="submit">
+            </form>
         </article>
 
         <article>

@@ -12,7 +12,7 @@ session_start();
 
     //TODO1: Visa en text endast om $_SESSION['user'] == "jonathan"
     
-    if($_SESSION['user'] == "jonathan" )
+    if($_SESSION['user'] == "jonathan" && $_SESSION['passwd'] == "superhemlis")
     {
         print("Hej på dig Jonathan");
         print("<p>Mitt lösenord är Superhemlis</p>"); 

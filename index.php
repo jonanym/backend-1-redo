@@ -111,7 +111,7 @@ print("<p>I dag är det " . $veckoDag[$veckodagInt]);
         $txt = "Hej, Ditt användarnamn är $username och ditt lösenord är $lösenord";
         $headers = "From: lösenord@arcada.com";
 
-        mail($to,$subject,$txt,$headers);
+        //mail($to,$subject,$txt,$headers);
         ?>
         </article>
 
@@ -182,24 +182,12 @@ print("<p>I dag är det " . $veckoDag[$veckodagInt]);
         <article>
             <h2>Uppg 7</h2>
             <form action="upload.php" method="post" enctype="multipart/form-data">
-<<<<<<< HEAD
                 Select image to upload:
                 <input type="file" name="fileToUpload" id="fileToUpload">
                 <input type="submit" value="Upload Image" name="submit">
             </form>
-=======
-            Select image to upload:
-            <input type="file" name="fileToUpload" id="fileToUpload">
-<<<<<<< HEAD
-            <input type="submit">
-
-            </aricle>
-=======
-            <input type="submit"
-
->>>>>>> 1674019f115136539cd60303aef707c6a36d2656
-        </article>
->>>>>>> ac6a0082f9cb2ca74cfa378c8b547e356e37348a
+            
+         </aricle>
 
         <article>
             <h2>Uppg 8 - besöksräknare</h2>

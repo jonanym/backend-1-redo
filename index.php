@@ -62,6 +62,10 @@ $veckodagInt = (int) $veckodag;
 $veckoDag = array("Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag");
 print("<p>I dag är det " . $veckoDag[$veckodagInt]);
 
+
+$veckoNummer = date('W');
+print( '<p>Veckonummer: ' . $veckoNummer."</p>");
+
 //print("<p> I dag är det " ..)
 ?>
         </article>
@@ -124,12 +128,14 @@ print("<p>I dag är det " . $veckoDag[$veckodagInt]);
             <?php
                 // uppg 5 - ge användaren en cookie
                 $cookie_name = "username";
-                $cookie_value = "nymajona";
+                $cookie_value = "okända främlingen";
                 setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/");
 
                 //Kolla ifall användaren har en cookie
                 if(isset($_COOKIE["username"])){
                 print("<p>Välkommen " . $cookie_value . "!</p>");
+                $senaste = $_COOKIE['AboutVisit'];
+                print("<p>Välkommen tillbaka! Din senaste visitation: ". $senaste);
                 }
                 else{
                 print("<p>DU är första gången på sidan</p>");
@@ -186,15 +192,41 @@ print("<p>I dag är det " . $veckoDag[$veckodagInt]);
                 <input type="file" name="fileToUpload" id="fileToUpload">
                 <input type="submit" value="Upload Image" name="submit">
             </form>
-            
-         </aricle>
+
+            Select image to upload:
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="submit">
+
+            </aricle>
+        </article>
+
 
         <article>
             <h2>Uppg 8 - besöksräknare</h2>
             <?php
-            $myfile = fopen("besok.log", "a+") or die("Unable to open file!");
-            fwrite($myfile, "Jonathan var här kl " . time() . "\n");
-            fclose($myfile);
+            $path = 'counter.txt';
+
+
+            $file  = fopen( $path, 'r' );
+            $count = fgets( $file, 1000 );
+            fclose( $file );
+            
+            
+            $count = abs( intval( $count ) ) + 1;
+            
+            
+            echo "{$count} visiterare\n";
+            
+            
+            $file = fopen( $path, 'w' );
+            fwrite( $file, $count . "\r\n". $ipAdress. "\r\n". date("H:i:s")  );
+            fclose( $file );
+            print("<br>");
+            print("<br>");
+            print("<br>");
+            print("<br>");
+            print("<br>");
+            print("<br>");        
 ?>
 
 

@@ -62,6 +62,10 @@ $veckodagInt = (int) $veckodag;
 $veckoDag = array("Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag");
 print("<p>I dag är det " . $veckoDag[$veckodagInt]);
 
+
+$veckoNummer = date('W');
+print( '<p>Veckonummer: ' . $veckoNummer."</p>");
+
 //print("<p> I dag är det " ..)
 ?>
         </article>

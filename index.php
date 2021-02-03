@@ -166,9 +166,15 @@ else{
             <form action="upload.php" method="post" enctype="multipart/form-data">
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
+<<<<<<< HEAD
             <input type="submit">
 
             </aricle>
+=======
+            <input type="submit"
+
+        </article>
+>>>>>>> ac6a0082f9cb2ca74cfa378c8b547e356e37348a
 
         <article>
             <h2>Uppg 8 - besöksräknare</h2>

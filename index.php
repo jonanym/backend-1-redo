@@ -231,24 +231,28 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
 
         <article>
             <h2>Uppg 8 - besöksräknare</h2>
+                     
             <?php
-            $path = 'counter.txt';
+
+            
+                //
+            $ipAdress = $_SERVER['REMOTE_ADDR'];
+            //Välj fil
+            $file = "counter.txt"; 
+            //lägg till
+            $file = fopen($file, "a"); //lägg till
+            $data = "<b>IP</b>: $ipAdress<br>";
+            //skriv ip:n i filen
+            fwrite($file, $data); 
+             //Stängt filen
+            fclose($file);
+            echo "Your IP adddress <b>$ipAdress</b> has been logged :D";
+            
+            
+                
+           
 
 
-            $file  = fopen( $path, 'r' );
-            $count = fgets( $file, 1000 );
-            fclose( $file );
-            
-            
-            $count = abs( intval( $count ) ) + 1;
-            
-            
-            echo "{$count} visiterare\n";
-            
-            
-            $file = fopen( $path, 'w' );
-            fwrite( $file, $count . "\r\n". $ipAdress. "\r\n". date("H:i:s")  );
-            fclose( $file );
             print("<br>");
             print("<br>");
             print("<br>");
@@ -259,6 +263,15 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
 
             <article>
             <h2>Uppg 9</h2>
+            Comment: <br>
+            <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
+            <?php
+            print("<br>");
+            print("<br>");
+            print("<br>");
+            print("<br>");
+            print("<br>");    
+            ?>
             </article>
 
 

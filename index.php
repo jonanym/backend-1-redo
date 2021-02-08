@@ -83,9 +83,34 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
         if (isset($_REQUEST["dag"]) && isset($_REQUEST["manad"])){
            $dag = $_REQUEST["dag"];
            $manad = $_REQUEST["manad"];
-           $datum = date("d.m.Y", mktime(0,0,0,$manad,$dag,2020));
-           
-           print("<p>Till den: " . date("d.m.Y", mktime(0,0,0,$manad,$dag,2021)) ." är det: "); 
+           $datum = date("d.m.Y", mktime(0,0,0,$manad,$dag));
+           $Veckodag = date("l", mktime(0,0,0,$manad,$dag));
+           print("<p>Den " . $datum . " är en " . $Veckodag . " och till den dagen är det: </p>");
+
+           $date1 = date('d.m.Y H:i:s', time());
+           $date2 = date('d.m.Y H:i:s', mktime(0,0,0,$manad,$dag));
+           //print($date1); 
+           //print("<br>");
+           //print($date2);
+           $diff = abs(strtotime($date2) - strtotime($date1));
+           $years = floor($diff / (365*60*60*24));
+           $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+           $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+           $hours = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24) / (60*60));
+           $minutes = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24  - $hours*60*60)/ 60); 
+           $seconds = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
+           print("<br>");
+           printf("%d days, %d hours, ". "%d minutes, %d seconds",$days, $hours, $minutes, $seconds);
+
+        }
+
+
+        //Todo Visa en annan text när man trycker submit och ingenting är skrivet i fältena
+
+
+        else
+        {
+            print("<p>Du måste fylla i både dag och månad tack!</p>");
         }
         ?>
 
@@ -107,7 +132,7 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
             $email = $_REQUEST['email'];
             $lösenord = Lösenord();
             //print($username);
-            print($lösenord);
+            //print($lösenord);
         }
 
         $to = "$email";
@@ -182,6 +207,9 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
             print("<br><br><a href = 'darkweb.php'> DARK WEB</a><br>");
             print("<a href = 'admin.php'> Admin</a>");
 
+
+            //Todo gör s¨att man returneras till huvudsidan om man inte har loggat in med rätta login uppgifter 
+
         ?>
         </article>
 
@@ -192,12 +220,6 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
                 <input type="file" name="fileToUpload" id="fileToUpload">
                 <input type="submit" value="Upload Image" name="submit">
             </form>
-
-            Select image to upload:
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit">
-
-            </aricle>
         </article>
 
 
@@ -228,6 +250,10 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
             print("<br>");
             print("<br>");        
 ?>
+
+            <article>
+            <h2>Uppg 9</h2>
+            </article>
 
 
         </article>

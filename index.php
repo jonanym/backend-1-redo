@@ -159,12 +159,18 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
                 //Kolla ifall användaren har en cookie
                 if(isset($_COOKIE["username"])){
                 print("<p>Välkommen " . $cookie_value . "!</p>");
-                $senaste = $_COOKIE['AboutVisit'];
-                print("<p>Välkommen tillbaka! Din senaste visitation: ". $senaste);
+                
+                $senasteCookie = "senastebesok";
+                $senasteVal = date("d.m.Y-H:i:s", time());
+                setcookie($senasteCookie, $senasteVal, time()+(86400*2), "/");
+
+                print("<p>Välkommen tillbaka! Din senaste visitation: ". $senasteVal);
                 }
                 else{
                 print("<p>DU är första gången på sidan</p>");
                 }
+
+                
 
 ?>
 

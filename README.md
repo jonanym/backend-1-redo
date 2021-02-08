@@ -22,3 +22,13 @@ Tackar åt min arbetskompis och tackar åt läraren!
 
 Jonathan
 ********
+
+Samma som Niklas så github har varit ganska difust. Har inte riktigt ännu förstått mig helt på github fast det har sakta men säkert blivit lite bättre hela tiden. Det var svårt om båda hade ändrat på något och så tog det en lång stund att få allting att fungera
+
+lite svårt med php eftersom det skiljer sig till en viss del från javascipt men tyckte nog om det. Skulle kanske ha velat ha lite mer genomgång för det blir lätt så att man inte har full koll på hur något fungerar fasst det fungerar
+
+UPPG 6. DE TVÅ OLIKA INLÅGGNINS UPPGIFTERNA ÄR: Login: jonathan, password: superhemlis för DARK WEB och Login: admin, Password: hemlighet för Admin.
+
+Vissa uppgifter blev inte helt perfekt fungerande men jag gjorde så gott jag kunde, motivationen har inte heller varit den högsta pga. alla distansstudier men fortfarande ett roligt och till största del lyckat projekt. 
+
+

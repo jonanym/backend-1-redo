@@ -68,80 +68,103 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
 
 //print("<p> I dag är det " ..)
 ?>
+
         </article>
 
         <article>
             <h2>Uppg 3</h2>
-            <form action="index.php" method="get">
+            <form action="index.php" method="post">
                 Dag: <input type="text" name="dag"><br>
                 Månad: <input type="text" name="manad"><br>
-                <input type="submit"><br>
+                <input type="submit" value="Räkna"><br>
 
                 <?php
 
+
         // Kolla om man tryckt submit
-        if (isset($_REQUEST["dag"]) && isset($_REQUEST["manad"])){
-           $dag = $_REQUEST["dag"];
-           $manad = $_REQUEST["manad"];
-           $datum = date("d.m.Y", mktime(0,0,0,$manad,$dag));
-           $Veckodag = date("l", mktime(0,0,0,$manad,$dag));
-           print("<p>Den " . $datum . " är en " . $Veckodag . " och till den dagen är det: </p>");
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // collect value of input field
+            $dag = $_POST['dag'];
+            $manad = $_POST['manad'];
+            if (empty($dag) && empty($manad)) {
+                echo "du måste fylla i dag och månad";
+            } 
+            elseif (empty($dag))
+            {
+                print("Du måste fylla i dagen");
+            }
 
-           $date1 = date('d.m.Y H:i:s', time());
-           $date2 = date('d.m.Y H:i:s', mktime(0,0,0,$manad,$dag));
-           //print($date1); 
-           //print("<br>");
-           //print($date2);
-           $diff = abs(strtotime($date2) - strtotime($date1));
-           $years = floor($diff / (365*60*60*24));
-           $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-           $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-           $hours = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24) / (60*60));
-           $minutes = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24  - $hours*60*60)/ 60); 
-           $seconds = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
-           print("<br>");
-           printf("%d days, %d hours, ". "%d minutes, %d seconds",$days, $hours, $minutes, $seconds);
+            elseif (empty($manad))
+            {
+                print("Du måste fylla i månaden");
+            }
+        
+            else {
 
-        }
-
-
-        //Todo Visa en annan text när man trycker submit och ingenting är skrivet i fältena
-
-
-        else
-        {
-            print("<p>Du måste fylla i både dag och månad tack!</p>");
+               $datum = date("d.m.Y", mktime(0,0,0,$manad,$dag));
+                   $Veckodag = date("l", mktime(0,0,0,$manad,$dag));
+                   print("<p>Den " . $datum . " är en " . $Veckodag . " och till den dagen är det: </p>");
+        
+                   $date1 = date('d.m.Y H:i:s', time());
+                   $date2 = date('d.m.Y H:i:s', mktime(0,0,0,$manad,$dag));
+                   //print($date1); 
+                   //print("<br>");
+                   //print($date2);
+                   $diff = abs(strtotime($date2) - strtotime($date1));
+                   $years = floor($diff / (365*60*60*24));
+                   $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+                   $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+                   $hours = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24) / (60*60));
+                   $minutes = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24  - $hours*60*60)/ 60); 
+                   $seconds = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
+                   print("<br>");
+                   printf("%d days, %d hours, ". "%d minutes, %d seconds",$days, $hours, $minutes, $seconds);
+            }
         }
         ?>
 
         </article>
 
 
-
         <article>
             <h2>Uppg 4</h2>
-            <form action="index.php" method="get">
+            <form action="index.php" method="post">
                 Användarnamn: <input type="text" name="username"><br>
                 E-mail: <input type="text" name="email"><br>
-                <input type="submit" value="Registrera dig">
+                <input type="submit" value="Registrera dig"><br>
             </form>
             <?php
-        if ( isset($_REQUEST['username']) && isset($_REQUEST['email'])) {
-            //uppg 4 - skapa confirmation email
-            $username = test_input($_REQUEST['username'] ) ;
-            $email = $_REQUEST['email'];
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $username = test_input($_POST['username']);
+            $email = $_POST['email'];
+            if (empty($username) && empty($email)) 
+            {
+              print("Du måste mata in användarnamn och email");
+          } 
+          elseif(empty($username))
+          {
+              print("Du måste också mata in användarnamn");
+          }
+          elseif(empty($email))
+          {
+              print("Du måste också mata in email");
+          }
+          
+          else {
             $lösenord = Lösenord();
-            //print($username);
-            //print($lösenord);
+            $to = "$email";
+            $subject = "Ditt lösenord";
+            $txt = "Hej, Ditt användarnamn är $username och ditt lösenord är $lösenord";
+            $headers = "From: lösenord@arcada.com";
+
+            mail($to,$subject,$txt,$headers);
+             }
         }
-
-        $to = "$email";
-        $subject = "Ditt lösenord";
-        $txt = "Hej, Ditt användarnamn är $username och ditt lösenord är $lösenord";
-        $headers = "From: lösenord@arcada.com";
-
-        //mail($to,$subject,$txt,$headers);
+            
         ?>
+
+
         </article>
 
 
@@ -180,7 +203,7 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
 
         <article>
             <h2>Uppg 6 </h2>
-            <form action="index.php" method="get">
+            <form action="index.php" method="post">
                 Login: <input type="text" name="login"><br>
                 Password: <input type="text" name="password"><br>
                 <input type="submit" value="Logga in">
@@ -201,9 +224,10 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
             {
                 $_SESSION['user'] = "nymajona";
             }
-            else if($login == "admin")
+            else if($login == "admin" && $passwd == "hemlighet")
             {
                 $_SESSION['user'] = "admin";
+                $_SESSION['passwd'] = "hemlighet";
             }
             else 
             {

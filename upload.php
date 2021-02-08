@@ -23,13 +23,15 @@ include "functions.php"
 
         <article>
             <h2>Uppg 7</h2>
-            <form action="upload.php" method="post" enctype="multipart/form-data">
+             <form action="upload.php" method="POST" enctype="multipart/form-data">
             Select image to upload:
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Upload Image" name="submit">
-            </form>
+         <input type="file" name="fileToUpload" id="fileToUpload" />
+         <input type="submit" value="Upload Image" />
+      </form>
         </article>
 
+
+       
         <?php
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -74,18 +76,43 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-    echo "<img src=".$filepath." height=200 width=300 />";
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
 }
 
+$dir_path = "uploads/";
+$extensions_array = array('jpg','png','jpeg');
+
+if(is_dir($dir_path))
+{
+    $files = scandir($dir_path);
+    
+    for($i = 0; $i < count($files); $i++)
+    {
+        if($files[$i] !='.' && $files[$i] !='..')
+        {
+            // get file name
+            echo "File Name -> $files[$i]<br>";
+            
+            // get file extension
+            $file = pathinfo($files[$i]);
+            $extension = $file['extension'];
+            echo "File Extension-> $extension<br>";
+            
+           // check file extension
+            if(in_array($extension, $extensions_array))
+            {
+            // show image
+            echo "<img src='$dir_path$files[$i]' style='width:auto;height:300px;'><br>";
+            }
+        }
+    }
+}
+
+print("<br><br><a href = 'index.php'> Tillbacka</a>");
 
 ?>
-
-
-
-
 
     </div>
 </body>

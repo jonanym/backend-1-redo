@@ -1,13 +1,20 @@
-# back-end
-Vårt backendprojekt finns att klona härifrån
-### För att skapa en underrrubrik
-Även här kan man skriva om sitt backendprojekt
-### En förbättring trots att SKURK varit här
-Hejsvejs
-### En underrubrik till
-En otrolig förbättring till vårt backendprojekt
-### Nyaste ändringen i vscode
-Få se om source control funkar!
-### Jag skrev in user.name och user.email
-Hoppas commit funkar nu!
-### ENS SKURK HAR ÄNDRAT MEDAN DENNIS SATT I VSCODE
+Reflektion
+
+Niklas
+*******
+
+Github har varit ganska svårt att slippa i. Själva hur man gör det är inte krångligt men att förstå vrför något händer och hur något händer är ganska mystiskt ännu.
+Det har inte varit user errrors och användnigen har varit smidigt. Vid ett skede nog trodde jag att jag hade lyckats radera Jonathans kod :P
+
+Att koda i PHP känns som om man måste lite ändra på hur man tänker på kodning / javascript. Vissa saker fungerar lite på samma sätt men PHP på ett sätt känns som 
+ett föränklat språk. Om javascript är italienska så är PHP ugriska. Simpel och effektiv. 
+
+Min egna tidsandvänding i projektet kunde ha varit högre(så som alltid), men vi har gjort på uppgifterna och diskuterat och kommit överens bra genom whatsapp. 
+
+Från ett skol perspektiv skulle jag kanske hellre ha gått PHP kursen först på början av 2 årskurset för det kändes att det kom lite för snabbt. En del av känslan kan också
+bero på att jag samtidigt går Frontend på nyt. 
+
+Jag tycker att kursen har varit bra uppbygd.
+
+Tackar åt min arbetskompis och tackar åt läraren!
+

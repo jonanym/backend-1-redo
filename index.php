@@ -159,13 +159,14 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
                 //Kolla ifall användaren har en cookie
                 if(isset($_COOKIE["username"])){
                 print("<p>Välkommen " . $cookie_value . "!</p>");
-                
+                //Räkna ut när du senaste besökt
                 $senasteCookie = "senastebesok";
                 $senasteVal = date("d.m.Y-H:i:s", time());
                 setcookie($senasteCookie, $senasteVal, time()+(86400*2), "/");
-
+                //Skriv ut senaste besök
                 print("<p>Välkommen tillbaka! Din senaste visitation: ". $senasteVal);
                 }
+                //Om du var här första gången
                 else{
                 print("<p>DU är första gången på sidan</p>");
                 }
@@ -233,9 +234,27 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
             <h2>Uppg 8 - besöksräknare</h2>
                      
             <?php
+            // Väljer fiö
+$path = 'counter.txt';
 
+// Läser hur mpnga de finns från förut
+$file  = fopen( $path, 'r' );
+$count = fgets( $file, 1000 );
+fclose( $file );
+
+// Lägger till +1
+$count = abs( intval( $count ) ) + 1;
+
+// Skriver ut det på sidan
+echo "{$count} hits\n"; 
+print("<br>");
+
+// öppnar den o skriver nya numret dit.
+$file = fopen( $path, 'w' );
+fwrite( $file, $count );
+fclose( $file );
             
-                //
+                //Skriver ip adressen till counter.txt
             $ipAdress = $_SERVER['REMOTE_ADDR'];
             //Välj fil
             $file = "counter.txt"; 
@@ -263,9 +282,12 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
 
             <article>
             <h2>Uppg 9</h2>
+        
             Comment: <br>
-            <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
+            <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea><br>
+            <input type="submit" name="submit" value="Submit"> 
             <?php
+           //Impossiburu
             print("<br>");
             print("<br>");
             print("<br>");

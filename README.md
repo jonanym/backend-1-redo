@@ -17,6 +17,7 @@ bero på att jag samtidigt går Frontend på nyt.
 Jag tycker att kursen har varit bra uppbygd och instruktionerna varit klara.
 
 Tackar åt min arbetskompis och tackar åt läraren!
+*******
 
 Jonathan
 ********

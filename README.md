@@ -3,8 +3,8 @@ Reflektion
 Niklas
 *******
 
-Github har varit ganska svårt att slippa i. Själva hur man gör det är inte krångligt men att förstå vrför något händer och hur något händer är ganska mystiskt ännu.
-Det har inte varit user errrors och användnigen har varit smidigt. Vid ett skede nog trodde jag att jag hade lyckats radera Jonathans kod :P
+Github har varit ganska svårt att slippa i. Själva hur man gör det är inte krångligt men att förstå varför något händer och hur något händer är ganska mystiskt ännu.
+Det har inte varit user errrors och användnigen har varit smidigt. Vid ett skede trodde jag nog att jag hade lyckats radera Jonathans kod i misstag :P
 
 Att koda i PHP känns som om man måste lite ändra på hur man tänker på kodning / javascript. Vissa saker fungerar lite på samma sätt men PHP på ett sätt känns som 
 ett föränklat språk. Om javascript är italienska så är PHP ugriska. Simpel och effektiv. 

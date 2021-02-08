@@ -14,7 +14,7 @@ Min egna tidsandvänding i projektet kunde ha varit högre(så som alltid), men 
 Från ett skol perspektiv skulle jag kanske hellre ha gått PHP kursen först på början av 2 årskurset för det kändes att det kom lite för snabbt. En del av känslan kan också
 bero på att jag samtidigt går Frontend på nyt. 
 
-Jag tycker att kursen har varit bra uppbygd.
+Jag tycker att kursen har varit bra uppbygd och instruktionerna varit klara.
 
 Tackar åt min arbetskompis och tackar åt läraren!
 

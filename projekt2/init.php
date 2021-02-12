@@ -16,9 +16,9 @@ function create_conn()
 {
     //Databaskonfiguration
     $servername = "localhost";
-    $username = "bistromd";
-    $password = "sup3rh3mlis";
-    $dbname = "bistromd";
+    $username = "nymajona";
+    $password = "QV3KfVbH74";
+    $dbname = "nymajona";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);

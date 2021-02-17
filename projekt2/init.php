@@ -14,6 +14,8 @@ function test_input($data)
 // Sets up connection to database - use $conn = create_conn(); to open connection and $conn->close();
 function create_conn()
 {
+
+    mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
     //Databaskonfiguration
     $servername = "localhost";
     $username = "nymajona";

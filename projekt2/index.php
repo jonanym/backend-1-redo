@@ -14,14 +14,14 @@
     <?php
     //om man har klickat på register knappen är stage sätt och innehåller stage signup
     if(isset($_REQUEST['stage']) && ($_REQUEST['stage'] == 'signup')){
+        //if(//kolla om användaren redan finns)
         include "register.php"; 
      }   
 
      else if(isset($_REQUEST['stage']) && ($_REQUEST['stage'] == 'signin' || $_REQUEST['stage'] == 'login')){
+        //if(//checka om lösenordet och användarnamnet existerar / stämmer)
         include "login.php"; 
      }   
-
-
 
         ?>
     

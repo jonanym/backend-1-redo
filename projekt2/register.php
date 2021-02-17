@@ -1,4 +1,6 @@
 <!-- registreringsformulär -->
+
+
 <form action="index.php" method="post">
         Användarnamn <br><input type="text" name="usr"><br>
         Lösenord <br><input type="password" nmame="psw"><br>
@@ -23,7 +25,7 @@ if (isset($_REQUEST['usr']) && isset($_REQUEST['psw'])  ) {
     $email="asas"; 
     $zip = 0056; 
     $bio="bäst"; 
-    $salary = 100;
+    $salary = 800;
     $preference = 2;
 
     // Prepared statements går snabbare att köra och skyddar mot SQL Injection!

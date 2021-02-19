@@ -14,19 +14,19 @@ function test_input($data)
 // Sets up connection to database - use $conn = create_conn(); to open connection and $conn->close();
 function create_conn()
 {
-
     mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
+
     //Databaskonfiguration
     $servername = "localhost";
-    $username = "nymajona";
-    $password = "QV3KfVbH74";
-    $dbname = "nymajona";
+    $username = "irjalajo";
+    $password = "63JFTL4yhh";
+    $dbname = "irjalajo";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     // FIX UTF8 encoding
-    $conn->set_charset("utf8");
+    $conn->set_charset("UTF-8");
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

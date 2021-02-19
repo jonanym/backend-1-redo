@@ -86,6 +86,72 @@ footer {
     margin: auto;       /* centrera */
     box-sizing: border-box;       /* och "skuffar" därmed inte ut högra bordern */
 }
+.reqform{
+    margin:auto;
+}
+.butlabel{
+    size:small;
+    text-align: left;
+}
+.container{
+    width:800px;
+    background-color:lightcoral;
+}
+.box {
+    border-style:solid;
+    border-color:#3D3D3D;
+    border-width:4px;
+}
+.comment {
+    width:300px;
+    border-style:solid;
+    border-color:#ffccfc;
+    border-width:4px;
+}
+.registerlist{
+    margin:auto;
+    list-style-type: none;
+}
+.registerlist li{
+    font-size:large;
+    margin:10px 5px;
+}
+.registerlist input {
+    width: 300px;
+    height: 30px;
+    background-color:rgb(255, 231, 234);
+    border-right: 1px solid;
+}
+.registerlist textarea {
+    width: 350px;
+    height: 120px;
+    background-color:rgb(255, 231, 234);
+    border-right: 1px solid;
+}
+
+.profile-picture img{
+    float: right;
+    display: block;
+    margin: 0px 10px 10px 0px;
+}
+.ad{
+    margin:5px;
+    background-color: aqua;
+}
+#registerbutton{
+    width: 30%;
+    height: 40px;
+    background-color:midnightblue;
+    border:none;
+    color:white;
+    font-size:larger;
+    cursor:pointer;
+}
+#logout {
+    margin-right:20px;
+    float: right;
+}
+
 
 /* Responsiv styling */
 @media (max-width:1200px) { /* Breakpoint vid <1200pxs skärmar (tablet) */

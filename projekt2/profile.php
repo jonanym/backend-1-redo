@@ -1,36 +1,51 @@
 <?php include "init.php" ?>
 <?php include "head.php" ?>
 
-
 <article>
-    <h1>Profilsidan</h1>
-    <?php
-    // Här hämtar vi användarens data
-    print("Användarnamnet är: " . $_SESSION['user'] . "<br>");
+<div class="container">
+    <h2>Här kommer vi bygga en profil sida</h2>
 
-    $conn = create_conn(); // mysqli ovjektet skapas
-    $user = $_SESSION['user']; // kolla vem som är inloggad
-    $sql ="SELECT * FROM users WHERE username = ?"; // ? placeholder för data
 
-    $stmt = $conn->prepare($sql);   // Prepare returnerar mysqli stmt objekt
-    $stmt->bind_param("s",$user);   // mata in användarinmatad data i sql
-    $stmt->execute();   // returnerar true eller false (lyckades köras op DBn eller ej)
+    <?php 
+    // print($_SESSION['user']);
 
-    $result = $stmt->get_result();  // Returnerar datan i form a ett mysqli_result objekt
-    $row = $result->fetch_assoc();   // Tar ut datan ur musqli_result objektet till en assArr
-    print("Riktiga namnet: <input type='text' value='" . $row['realname'] ."'><br>");
-    print("Annonstext: <textarea>" . $row['bio'] ."</textarea>");
+        if(isset($_SESSION['user'])){
+        $conn = create_conn();
+        $user = $_SESSION['user'];
 
+        $sql = "SELECT * FROM users WHERE username = ?";  // ? = Placeholder för data
+
+        $stmt = $conn->prepare($sql); // Prepare returnerar mysqli_stmt objekt
+        $stmt->bind_param("s",$user); // Nuförst skickar den användarinmatad data till sql
+        $stmt->execute(); // execute returnar true eller false
+
+
+        $result = $stmt->get_result(); // Returnar data i form av ett msqli_result objekt
+        $row = $result->fetch_assoc(); // Ta ut data från mysqli_result objekt till en ass array
+        print("Användarnamn: <label>".$row['realname']."</label><br>"); // Pekar raden som vi vill hämta
+        print("Bio: <label>".$row['bio']."</label>");
+        // Skriv profil kommentarer
+
+    } else {
+        print("Du ser någon annans profil");
+        // Kommentarsformulär
+        // För att hitta kommetnarerna för en viss profil måste ni hitta idn för profilerna
+        // (Adda Prepared statement)
+        //SELECT id, username FROM users WHERE username = $_REQUEST['user'];
+        //SELECT comment FROM comments WHERE profile_id = $row['id'];
+    }
 
     ?>
-    <!-- Lite html kod mitt inne i php scriptet :O -->
-    <input type="button" value="Modifiera"><br>
-    <?php
-    // PHP koden fortsätter
-    print("Lite till info från databasen: " .$row['preference']);
-    ?>
+    <ul class="profile-picture">
+        <li>
+            <img src="./testmedia/placeholder.png" alt="Placeholder picture">
+            <p>Nu ska vi se här om vi lägger massvis med text här</p>
+        </li>
+    </ul>
+</div>
+
+
+
 </article>
-
-
-
 <?php include "footer.php" ?>
+<?php include "accdelete.php" ?>

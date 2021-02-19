@@ -1,35 +1,22 @@
 <?php include "init.php" ?>
 <?php include "head.php" ?>
 
-<article>
-    <h1>Hämta data</h1>
-    <?php include "fetch.php" ?>
-</article>
 
 <article>
-    <h1>Registrera dig</h1>
-    <p>För att se emailen på annonserna, logga in eller registrera dig</p>
-    <a href="index.php?stage=signin"><input type="button" value="logga in"></a>
-    <a href="index.php?stage=signup"><input type="button" value="registrera dig"><br></a>
+    <h1>Välkommen till DenDär dating sidan!</h1>
     <?php
-    //om man har klickat på register knappen är stage sätt och innehåller stage signup
-    if(isset($_REQUEST['stage']) && ($_REQUEST['stage'] == 'signup')){
-        //if(//kolla om användaren redan finns)
-        include "register.php"; 
-     }   
+    if (!isset($_SESSION['user'])){
+    include "welcome.php";
+    } else {
+        echo("<a href='./logout.php' id='logout'>Logout</a>");
+    }
 
-     else if(isset($_REQUEST['stage']) && ($_REQUEST['stage'] == 'signin' || $_REQUEST['stage'] == 'login')){
-        //if(//checka om lösenordet och användarnamnet existerar / stämmer)
-        include "login.php"; 
-     }   
-
-        ?>
-    
-    
-    
+    ?>
 </article>
-
-
+<article>
+<?php include "profile.php" ?>
+<?php include "comment.php" ?>
+</article>
 
 
 <?php include "footer.php" ?>

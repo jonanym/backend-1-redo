@@ -97,6 +97,9 @@ footer {
     width:800px;
     background-color:lightcoral;
 }
+.container h2{
+    padding:30px 50px;
+}
 .box {
     border-style:solid;
     border-color:#3D3D3D;
@@ -146,6 +149,7 @@ footer {
     color:white;
     font-size:larger;
     cursor:pointer;
+    margin-bottom: 20px;
 }
 #logout {
     margin-right:20px;

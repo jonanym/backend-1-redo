@@ -1,18 +1,17 @@
-<?php
-session_start();
-?>
-
 <form action="index.php" method="post">
-  Användarnamn <br><input type="text" name="usr"><br>
-  Lösenord <br><input type="password" name="psw"><br>
+  Användarnamn <br><input type="text" name="usr" id="usr"><br>
+  Lösenord <br><input type="password" name="psw" id="usr"><br>
   <input type="hidden" name="stage" value="Login">
   <input type="submit" value="Logga in">
 </form>
 
 <?php
-
-  echo("<p>" . $usr_error . " " . $psw_error) ."</p>";
-
+  
+  if(isset($_POST['submit'])){
+    print($_POST['usr']);
+  } else {
+    print("No button clicked yet");
+  }
   if (isset($_POST['usr']) && isset($_POST['psw'])) //when form submitted
   {
     if(empty(trim($_POST["usr"]))){
@@ -24,25 +23,32 @@ session_start();
     }
     if(empty(trim($_POST["psw"]))){
       $psw_error = "Du kan inte lämna lösenord tomt.";
+      print($psw_error);
 
     } else{
       $password = trim($_POST["psw"]);
       $password = stripslashes($name);
+      
     }
 
-
-  $loginsql = ("SELECT username, password FROM users WHERE username = '".$name."' AND  password = '".$password."'") or die("Failed to query " .mysql_error());
-  $row = mysql_fetch_array($loginsql);
-
-  if($row['username'] == $name && $row['password'] == $password)
-    {
-    print("YAY SUCCESS");
-
+  $conn = create_conn();
+  $query = ("SELECT username, password FROM users WHERE username = '$name' AND  password = '".md5($password)."'");
+  
+  $result -> mysqli_query($conn,$query) or die(mysql_error());
+  $row = mysqli_num_rows($result);
+  if($row==1){
+    echo "<script>WTF IT WORKED;</script>";
+    print("IT WORKED");
     $_SESSION['user'] = $name;
-    header("refresh:3,url=./profile.php");
+  } else{
+    echo "<div class='form'>
+   <h3>Username/password is incorrect.</h3>
+   <br/>Click here to <a href='login.php'>Login</a></div>";
     }
-    else {
-      echo "<script>alert('Give both username and password');</script>";
-      echo "<noscript>Give both username and password</noscript>";
-    }
-  }
+       }else{
+
+
+  ?><div class="box">
+  <p>Coolt sätt att skriva php else</p>
+  </div>
+  <?php } ?>

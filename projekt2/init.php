@@ -24,6 +24,7 @@ function create_conn()
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
+    
 
     // FIX UTF8 encoding
     $conn->set_charset("UTF-8");

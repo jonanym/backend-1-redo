@@ -6,6 +6,7 @@
     <h1>Välkommen till DenDär dating sidan!</h1>
     <?php
     if (!isset($_SESSION['user'])){
+        echo("<p>Du är för tillfället inte inloggad</p>");
     include "welcome.php";
     } else {
         echo("<a href='./logout.php' id='logout'>Logout</a>");

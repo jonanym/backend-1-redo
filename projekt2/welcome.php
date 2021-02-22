@@ -9,6 +9,6 @@
     }
     // Login click INCLUDE register formulär i php
     else if (isset($_REQUEST['stage']) && ($_REQUEST['stage'] == 'signin')) {
-        include "login.php";
+        header('Location: ./login.php');
     }
     ?>

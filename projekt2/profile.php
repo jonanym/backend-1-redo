@@ -7,7 +7,6 @@
 
 
     <?php 
-    // print($_SESSION['user']);
 
         if(isset($_SESSION['user'])){
         $conn = create_conn();

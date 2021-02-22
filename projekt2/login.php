@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 
 <form action="index.php" method="post">
@@ -12,62 +11,38 @@ session_start();
 
 <?php
 
-  if (isset($_POST['usr']) && isset($_POST['psw']) && isset($_POST['submit'])) //when form submitted
+  echo("<p>" . $usr_error . " " . $psw_error) ."</p>";
+
+  if (isset($_POST['usr']) && isset($_POST['psw'])) //when form submitted
   {
     if(empty(trim($_POST["usr"]))){
-      $usr_error = "Please enter username.";
+      $usr_error = "Du kan inte lämna användarnamn tomt.";
+      print($usr_error);
     } else{
       $name = trim($_POST["usr"]);
       $name = stripslashes($name);
     }
     if(empty(trim($_POST["psw"]))){
-      $psw_error = "Please enter password.";
+      $psw_error = "Du kan inte lämna lösenord tomt.";
+
     } else{
       $password = trim($_POST["psw"]);
       $password = stripslashes($name);
     }
 
 
-  $sql = ("SELECT username, password FROM users WHERE username = '".$name."' AND  password = '".$password."'");
-  if(mysql_num_rows($sql) > 0 )
+  $loginsql = ("SELECT username, password FROM users WHERE username = '".$name."' AND  password = '".$password."'") or die("Failed to query " .mysql_error());
+  $row = mysql_fetch_array($loginsql);
+
+  if($row['username'] == $name && $row['password'] == $password)
     {
     print("YAY SUCCESS");
 
     $_SESSION['user'] = $name;
-
-      /*  
-    $stmt = $conn->prepare($sql); 
-    $stmt->bind_param("ss", $username, $password);
-    $stmt->execute();
-    $result = $stmt->get_result(); // get the mysqli result
-    $user = $result->fetch_assoc();
-
-
-    if ($_POST['login'] === login && $_POST['password'] === password)
-    {
-    $_SESSION['login'] = $_POST['login']; //write login to server storage
-    header('Location: /'); //redirect to main */
+    header("refresh:3,url=./profile.php");
     }
     else {
       echo "<script>alert('Give both username and password');</script>";
       echo "<noscript>Give both username and password</noscript>";
     }
   }
-  else if (!isset($_POST['usr']) || !isset($_POST['psw']))
-  {
-    print("Fyll i både användarnamn och lösenord tack!");
-    
-    //echo "<script>alert('Wrong login or password');</script>";
-    //echo "<noscript>Wrong login or password</noscript>";
-  }
-
-/*
-  if(isset($_REQUEST['stage']) && ($_REQUEST['stage'] == 'signin' || $_REQUEST['stage'] == 'login')) {
-    print("loggar in om 2 sek...");
-
-    //temp login solusion
-    $_SESSION['user'] = "manlyman";
-    header("refresh:10,url=./profile.php"); // Login succes -> profil
-  } else {
-    print("Användarnamn OCH lösenord tack!");
-  } */

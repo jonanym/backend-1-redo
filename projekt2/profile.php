@@ -25,7 +25,7 @@
         print("Användarnamn: <label>".$row['realname']."</label><br>"); // Pekar raden som vi vill hämta
         print("Bio: <label>".$row['bio']."</label>");
         // Skriv profil kommentarer
-
+        include 'accdelete.php';
     } else {
         print("Du ser någon annans profil");
         // Kommentarsformulär
@@ -36,12 +36,8 @@
     }
 
     ?>
-    <ul class="profile-picture">
-        <li>
-            <img src="./testmedia/placeholder.png" alt="Placeholder picture">
-            <p>Nu ska vi se här om vi lägger massvis med text här</p>
-        </li>
-    </ul>
+    
+    
 </div>
 
 

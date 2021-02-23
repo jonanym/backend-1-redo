@@ -15,15 +15,15 @@ if(isset($_POST['submit'])){
 $name = "abc";
 
     print($name);
-$query = ("SELECT * FROM users WHERE username = '$name'");
+    $sqlquery = ("SELECT * FROM users WHERE username = '$name'");
   
-  $result -> mysqli_query($conn,$query) or die(mysql_error());
+    $result = $conn -> query($sqlquery);
 
-  $row = mysqli_num_rows($result);
+    $row = $result -> fetch_assoc();
 
-  $printer = mysqli_fetch_assoc($row);
-
-  print($printer);
+    //$printer = mysqli_fetch_assoc($row);
+    print("Hej");
+    print($row['username']);
 } else {
     print("Click the button please");
 }

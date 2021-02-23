@@ -42,9 +42,10 @@
     print($name);
     print($password);
     // removed från query temporärt: ("SELECT username, password FROM users WHERE username AND  password = '".md5($password)."');
-  $query = ("SELECT username FROM users WHERE username = $name");
+  $query = "SELECT username FROM users WHERE username = '$name'";
   
-  $result -> mysqli_query($conn,$query) or die(mysql_error());
+  $conn = create_conn();
+  $result = mysqli_query($conn,$query);
 
   $row = mysqli_num_rows($result);
   if($row==1){

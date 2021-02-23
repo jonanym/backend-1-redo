@@ -11,7 +11,29 @@
 <?php
 
 if(isset($_POST['submit'])){
-    print("stage 1 ");
+    $name = "abc";
+    $query = "SELECT username FROM users WHERE username = ?";
+    $conn = create_conn();
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s",$name);
+    $stmt->execute();
+    $result = $stmt->get_result();
+  
+    /*$idquery = "SELECT id FROM users WHERE username = ?";
+    $idstmt = $conn->prepare($idquery);
+    $idstmt->bind_param("s",$name);
+    $idstmt->execute();
+    $idresult = $idstmt->get_result();
+    $idrow = */
+    
+  
+    $row = mysqli_num_rows($result);
+    $content = $result[1];
+    
+    print($row);
+    print($content);
+    
+    /*print("stage 1 ");
     $name = "abc";
 
     print($name);
@@ -21,7 +43,7 @@ if(isset($_POST['submit'])){
     $result = mysqli_query($conn,$query);
 
     $row = mysqli_num_rows($result);
-    print($row['bio']);
+    print($row['bio']); */
 } else {
     print("Click the button please");
 }

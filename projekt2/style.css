@@ -175,7 +175,28 @@ footer {
     margin-right:20px;
     float: right;
 }
-
+#likeb{
+    border-style:none;
+    margin:5px 0px 10px 15px;
+    background-color:#1abc9c;
+}
+#likeb:hover{
+    fill:darkblue;
+}
+#likeb:active{
+    fill:rgb(51, 206, 51);
+   }
+#dislikeb{
+    border-style:none;
+    margin:5px 0px 10px 5px;
+    background-color:#1abc9c;
+}
+#dislikeb:hover{
+    fill:darkblue;
+}
+#dislikeb:active{
+    fill:rgb(206, 4, 45);
+   }
 
 /* Responsiv styling */
 @media (max-width:1200px) { /* Breakpoint vid <1200pxs skärmar (tablet) */

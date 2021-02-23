@@ -73,6 +73,7 @@
                 <li><label>Preferens</label><br><h3>".$row['realname']. "</h3></li>
             </ul><br><br>"
         );
+        include "like.php";
     } else {
         $conn = create_conn();
         $user = $_GET['user'];

@@ -21,9 +21,26 @@
 
         $result = $stmt->get_result(); // Returnar data i form av ett msqli_result objekt
         $row = $result->fetch_assoc(); // Ta ut data från mysqli_result objekt till en ass array
+            
+            // username, realname, password, email, zipcode, bio, salary, preference
         
-        print("Användarnamn: <label>".$row['realname']."</label><br>"); // Pekar raden som vi vill hämta
-        print("Bio: <label>".$row['bio']."</label>");
+
+
+        echo(
+            "<ul class='registerlist'>
+                <br>
+                <li><label>Användarnamn</label><br><h3>".$row['username']. "</h3></li>
+                <li><label>Namn</label><br><h3>".$row['realname']. "</h3></li>
+                <li><label>Email</label><br><h3>".$row['email']. "</h3></li>
+                <li><label>Postnummer</label><br><h3>".$row['zipcode']. "</h3></li><br>
+
+                <label>Profil BIO</label><br>
+                <p>".$row['bio']. "</p></li><br>
+                
+                <li><label>Årslön</label><h3>".$row['salary']. "</h3></li></li><br>
+                <li><label>Preferens</label><br><h3>".$row['realname']. "</h3></li>
+            </ul><br><br>"
+        );
         // Skriv profil kommentarer
         include 'accdelete.php';
     } else {
@@ -44,4 +61,3 @@
 
 </article>
 <?php include "footer.php" ?>
-<?php include "accdelete.php" ?>

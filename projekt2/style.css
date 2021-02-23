@@ -86,6 +86,9 @@ footer {
     margin: auto;       /* centrera */
     box-sizing: border-box;       /* och "skuffar" därmed inte ut högra bordern */
 }
+.divadd{
+    padding: 20px;
+}
 .reqform{
     margin:auto;
 }

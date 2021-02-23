@@ -1,6 +1,6 @@
-<div>
+<div class="divadd">
     <input type="submit" class="button" name="accdelete" value="Delete">
-</div>
+
 
 <?php    
     if(isset($_POST['accdelete'])){
@@ -8,5 +8,8 @@
     } else {
         print("<p>Alles gut</p>");
     }
+    
     //  Button först -> Ge lösenord
     //  IF lösenord match on submit -> Remove ID tabellz
+    ?>
+    </div>

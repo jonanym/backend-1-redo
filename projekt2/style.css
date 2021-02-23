@@ -196,7 +196,28 @@ footer {
 }
 #dislikeb:active{
     fill:rgb(206, 4, 45);
-   }
+}
+CSS
+.box {
+  display: none;
+  background: #ccc;
+  width: 200px;
+  height: 130px;
+}
+#trigger:checked + .box {
+  display: block;
+}
+.box {
+  display: none;
+  background:palevioletred;
+}
+#trigger:checked + .box {
+
+  display: block;
+}
+
+
+
 
 /* Responsiv styling */
 @media (max-width:1200px) { /* Breakpoint vid <1200pxs skärmar (tablet) */

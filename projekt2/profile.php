@@ -23,9 +23,6 @@
 
             $result = $stmt->get_result(); // Returnar data i form av ett msqli_result objekt
             $row = $result->fetch_assoc(); // Ta ut data från mysqli_result objekt till en ass array
-            
-            // username, realname, password, email, zipcode, bio, salary, preference
-        
 
             echo(
             "<ul class='registerlist'>
@@ -42,8 +39,11 @@
                 <li><label>Preferens</label><br><h3>".$row['realname']. "</h3></li>
             </ul><br><br>"
         );
-        // Skriv profil kommentarer
-        include 'accdelete.php';
+
+            include "accdelete.php";
+      
+        
+
     } else if (isset($_SESSION['user']) && $_GET['user'] != $_SESSION['user']) {
         $conn = create_conn();
         $user = $_GET['user'];

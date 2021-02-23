@@ -1,15 +1,26 @@
-<div class="divadd">
+<!-- <div class="hide">
+    <h3>Click text to delete</h3>
     <input type="submit" class="button" name="accdelete" value="Delete">
+    </div> -->
 
-
+<label for="trigger">Delete account</label>
+<input id="trigger" type="checkbox">
+<div class="box">
+    <h3>Skriv ditt lösenord och tryck DELETE</h3>
+    <form>
+        <input type="text" name="deletepw">
+        <input type="submit" name="submit" value="DELETE"><br>
+    </form> 
+    <h4>VARNING - Din profilsida tas bort</h4>
+</div>
 <?php    
-    if(isset($_POST['accdelete'])){
+    if(isset($_POST['deletepw'])){
         echo "Shit just got real!";
     } else {
-        print("<p>Alles gut</p>");
+        print("<p>:)</p>");
     }
     
     //  Button först -> Ge lösenord
     //  IF lösenord match on submit -> Remove ID tabellz
     ?>
-    </div>
+    

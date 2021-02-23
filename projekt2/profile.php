@@ -21,6 +21,7 @@
 
         $result = $stmt->get_result(); // Returnar data i form av ett msqli_result objekt
         $row = $result->fetch_assoc(); // Ta ut data från mysqli_result objekt till en ass array
+        
         print("Användarnamn: <label>".$row['realname']."</label><br>"); // Pekar raden som vi vill hämta
         print("Bio: <label>".$row['bio']."</label>");
         // Skriv profil kommentarer

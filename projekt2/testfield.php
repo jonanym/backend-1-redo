@@ -12,18 +12,16 @@
 
 if(isset($_POST['submit'])){
     print("stage 1 ");
-$name = "abc";
+    $name = "abc";
 
     print($name);
-    $sqlquery = ("SELECT * FROM users WHERE username = '$name'");
+    $query = "SELECT bio FROM users WHERE username = 'abc'";
   
-    $result = $conn -> query($sqlquery);
+    $conn = create_conn();
+    $result = mysqli_query($conn,$query);
 
-    $row = $result -> fetch_assoc();
-
-    //$printer = mysqli_fetch_assoc($row);
-    print("Hej");
-    print($row['username']);
+    $row = mysqli_num_rows($result);
+    print($row['bio']);
 } else {
     print("Click the button please");
 }

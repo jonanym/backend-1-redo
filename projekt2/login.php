@@ -39,16 +39,19 @@
       print("Password rensat ");
     }
     print("Steg 2 lyckad");
+    print($name);
+    print($password);
     // removed från query temporärt: ("SELECT username, password FROM users WHERE username AND  password = '".md5($password)."');
   $query = ("SELECT username FROM users WHERE username = $name");
   
   $result -> mysqli_query($conn,$query) or die(mysql_error());
+
   $row = mysqli_num_rows($result);
   if($row==1){
     echo "<script>WTF IT WORKED;</script>";
     print("IT WORKED");
     $_SESSION['user'] = $name;
-  } else{
+  } else {
     print("härdå?");
     echo "<div class='form'>
    <h3>Username/password is incorrect.</h3>

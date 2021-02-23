@@ -1,7 +1,7 @@
 <?php include "init.php" ?>
 <?php include "head.php" ?>
 
-<article class="box">
+<article class="container">
     <h2>Logga in!</h2>
 <form action="login.php" method="post">
   Användarnamn <br><input type="text" name="usr" id="usr"><br>
@@ -47,7 +47,7 @@
   if($row==1){
     print("Success");
     $_SESSION['user'] = $name;
-    header('Location: ./profile.php');
+    header('Refresh:2; url=index.php');
   } else {
     echo "<div class='form'>
    <h3>Username/password is incorrect.</h3></div>";

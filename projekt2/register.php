@@ -57,8 +57,10 @@ $preference = "1"; //test_input($_POST['preference']);
     $statement->bind_param("ssssisii",$username, $realname, $password, $email, $zip, $bio, $salary, $preference);
     $statement->execute();
     
+    
         // OM statement executades = Data har skrivits in i tabellen. SUCCESS.
         if ($statement->execute()) {
+            $conn->close();
 
                 print("Du har registrerats!");
 

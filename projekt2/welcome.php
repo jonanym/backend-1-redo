@@ -9,5 +9,7 @@
     }
     // Login click INCLUDE register formulär i php
     else if (isset($_REQUEST['stage']) && ($_REQUEST['stage'] == 'signin')) {
-        header('Location: ./login.php');
+        print("Lets log in . . .");
+        header('Refresh:1; url=login.php');
+        //include "login.php";
     }

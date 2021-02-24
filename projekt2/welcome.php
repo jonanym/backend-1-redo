@@ -11,4 +11,3 @@
     else if (isset($_REQUEST['stage']) && ($_REQUEST['stage'] == 'signin')) {
         header('Location: ./login.php');
     }
-    ?>

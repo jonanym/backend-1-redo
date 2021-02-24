@@ -1,7 +1,7 @@
 <div class="container">
     <h2>Registrerings uppgifter</h2>
     
-    <form class="reqform">
+    <form class="reqform" action="https://cgi.arcada.fi/~irjalajo/BP2/backend-projekt-1/projekt2/index.php?stage=signup" method="post">
         <ul class="registerlist">
             <br>
                 <li><label>Användarnamn</label><br><input type="text" name="uninput"/></li>
@@ -24,43 +24,52 @@
     </form>
 
 <?php
+print("Stage 0");
 // Kolla att man klickat submit!
 if (isset($_POST['submit'])){
+    print("Stage 1");
 
 
-$prefArr = ['Manlig', 'Kvinnliga', 'Annan', 'Båda', 'Alla'];
+//$prefArr = array['Manlig', 'Kvinnliga', 'Annan', 'Båda', 'Alla'];
 
 //if (isset($_REQUEST['usr']) && isset($_REQUEST['psw'])  ) {
-    //KOM IHÅG XSS PROTECTION
-    $username = test_input($_REQUEST['usr']);
-    $password = test_input($_REQUEST['psw']);
+//KOM IHÅG XSS PROTECTION
+$username = test_input($_REQUEST['uninput']);
+$password = test_input($_REQUEST['pwinput']);
+$repassword = test_input($_REQUEST['pwrepeat']);
+$realname = test_input($_POST['rninput']); 
+$email = test_input($_POST['eminput']); 
+$zip = test_input($_POST['pninput']); 
+$bio = test_input($_POST['bioinput']); 
+$salary = test_input($_POST['ysinput']);
+$preference = "1"; //test_input($_POST['preference']);
+
+    // OM båda passwordena är samma går vi vidare
+    if ($password == $repassword){
+    $conn = create_conn();
     
     // Krypterar lösenordet
     $password = hash("sha256", $password);
 
-    $realname = test_input($_POST['rninput']); 
-    $email = test_input($_POST['eminput']); 
-    $zip = test_input($_POST['pninput']); 
-    $bio = test_input($_POST['bioinput']); 
-    $salary = test_input($_POST['ysinput']);
-    $preference = test_input($_POST['preference']);
-
-    
     // Prepared statements går snabbare att köra och skyddar mot SQL Injection!
-    $statement = $conn->prepare("INSERT INTO users (username, realname, password, email, zipcode, bio, salary, preference) VALUES (?,?,?,?,?,?,?,?)");
+    $query = "INSERT INTO users (username, realname, password, email, zipcode, bio, salary, preference) VALUES (?,?,?,?,?,?,?,?)";
+    $statement = $conn->prepare($query);
     $statement->bind_param("ssssisii",$username, $realname, $password, $email, $zip, $bio, $salary, $preference);
     $statement->execute();
-
     
-    // De flesta metoderna returnerar ett objekt (sant) om de lyckas & false ifall de misslyckas.
-    if ($statement->execute()) {
-        print("Du har registrerats!");
-    }
-    else{
-        print("error");
-    }
-      
-    // Kom ihåg att error handling
-//}
+        // OM statement executades = Data har skrivits in i tabellen. SUCCESS.
+        if ($statement->execute()) {
 
-}
+                print("Du har registrerats!");
+
+            } else {
+                // Ifall statement failade att executa.
+                print("error" .$conn->error);
+
+            }
+
+        } else {
+            // else för lösenords dubbleteringen misslyckades
+            echo("<h3>Du lyckades inte skriva ett lösenord två gåner</h3>");
+    }
+} 

@@ -13,9 +13,24 @@
     </form> 
     <h4>VARNING - Din profilsida tas bort</h4>
 </div>
-<?php    
-    if(isset($_POST['deletepw'])){
-        echo "Shit just got real!";
+<?php
+$passkey = $_POST['deletepw'];
+$sesskey = $_SESSION['user'];
+
+$query = "SELECT password FROM users WHERE username = ?";
+$conn = create_conn();
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s",$sesskey);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+
+    if($passkey == $row['password']){
+        $query = "DELETE FROM users WHERE username = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s",$sesskey);
+        $stmt->execute();
+        header('Refresh:2; url=index.php');
     } else {
         print("<p>:)</p>");
     }

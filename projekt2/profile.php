@@ -11,6 +11,7 @@
         if ($_GET['user'] == $_SESSION['user']) {
 
             //if(isset($_SESSION['user'])){
+            $current = $_GET['user'];
             $conn = create_conn();
             $user = $_SESSION['user'];
 

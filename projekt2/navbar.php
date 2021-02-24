@@ -1,4 +1,4 @@
-<a href="./"><img id="logo" src="logo.svg" alt="DenDär" /></a>
+<a href="./"><img id="logo" src="../projekt2/images/kisskiss.PNG" alt="DenDär" /></a>
 <nav>
     <ul>
         <li><a href="./index.php">Hem</a></li>

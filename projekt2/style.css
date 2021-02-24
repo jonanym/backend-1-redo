@@ -2,203 +2,216 @@
 
 /* Här är sidhuvudet */
 header {
-    background-color: #1abc9c;
-    color: white;
-    font-weight: bold;
-    display: flex;          /* Förälder till nav */
-    align-items: center;    /* Centrerar på höjden */
-    padding: 6px 6px;       /* Shorthand, uppe & nere samt vänster & höger */
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  display: flex; /* Förälder till nav */
+  align-items: center; /* Centrerar på höjden */
+  padding: 6px 6px; /* Shorthand, uppe & nere samt vänster & höger */
 }
 header a {
-    text-decoration: none;  /* Remove underline */
-    color: white;
+  text-decoration: none; /* Remove underline */
+  color: white;
 }
 /* Id i css med # */
 #logo {
-    /* Fallback för ifall bilder är avstängda, så står de ändå DenApp */
-    font-size: xx-large;    line-height: 1.8em;
+  /* Fallback för ifall bilder är avstängda, så står de ändå DenApp */
+  font-size: xx-large;
+  line-height: 1.8em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 20px;
+  background-color: black;
+  font-family: "Caladea", serif;
+  width: 450px;
+  height: 150px;
 }
-
 
 /* Menyn */
 nav {
-    margin-left: auto;  /* Skuffar menyn till högra kanten */
+  margin-left: auto; /* Skuffar menyn till högra kanten */
+  background-color: black;
+  font-family: "Caladea", serif;
 }
 nav ul {
-    padding-left: 0px;  /* Bort med inbyggd padding så att mobila menyn blir under logon */
-    margin: 0px 20px;   /* Ta bort inbyggd margin + lite space till höger och vänster */
+  padding-left: 0px; /* Bort med inbyggd padding så att mobila menyn blir under logon */
+  margin: 0px 20px; /* Ta bort inbyggd margin + lite space till höger och vänster */
 }
 nav li {
-    list-style: none;   /* Bort med bollar */
-    float: left;        /* Horisontell meny */
-    padding: 10px;      /* Space för hovereffekt */
-    margin: 0px 5px;    /* Space mellan länkar */
-    border-radius: 5px; /* Hovereffekts runda kanter */
+  display: flex;
+  justify-content: space-around;
+  list-style: none; /* Bort med bollar */
+  float: left; /* Horisontell meny */
+  padding: 10px; /* Space för hovereffekt */
+  margin: 0px 5px; /* Space mellan länkar */
+  border-radius: 5px; /* Hovereffekts runda kanter */
 }
 nav li:hover {
-    background-color: #00AA89; /* Hovereffekt */
+  background-color: goldenrod; /* Hovereffekt */
 }
-
+/*Bestämmer hur exakt texten på länkarna är formaterade i nav*/
 
 /* Stilen på sidans kropp och innehåll */
 html {
-    height: 100%;                     /* Ta upp hela skärmen */
+  height: 100%; /* Ta upp hela skärmen */
 }
 body {
-    margin: 0;                        /* bort med inbyggd margin */
-    background-color: #3D3D3D;      /* bakgrund syns bara på desktop */
-    /* ifall ni har custom font, fallback to web-safe */
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
-    height: 100%;
+  margin: 0; /* bort med inbyggd margin */
+  background-color: #272727; /* bakgrund syns bara på desktop */
+  /* ifall ni har custom font, fallback to web-safe */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 100%;
 }
 section {
-    color: #3D3D3D;           /* fonten samma färg som body bakgrunden */
-    background-color: #FFF;
-    max-width: 1000px;          /* Tablet-desktop "breakpoint" för läslighet */
-    margin: auto;               /* Centrera på desktop */
-    min-height: 100%;           /* Skuffa ner footern trots lite innehåll */
+  color: #3d3d3d; /* fonten samma färg som body bakgrunden */
+  background-color: #fff;
+  max-width: 1000px; /* Tablet-desktop "breakpoint" för läslighet */
+  margin: auto; /* Centrera på desktop */
+  min-height: 100%; /* Skuffa ner footern trots lite innehåll */
 }
 article {
-    padding: 10px;              /* Space mellan artikel & artikel (margin collapsar) */
-    margin: 10px;               /* Space mellan artikel och t.ex section */
+  padding: 10px; /* Space mellan artikel & artikel (margin collapsar) */
+  margin: 10px; /* Space mellan artikel och t.ex section */
 }
 /* Klasser i css med . */
-.separator {                            /* Stilistiskt element */
-    border-bottom: 2px solid #EEE;    /* Ett simpelt streck under .separator */
-    display: block;                     /* Gör span till blockelement (100% bredd) */
+.separator {
+  /* Stilistiskt element */
+  border-bottom: 2px solid #eee; /* Ett simpelt streck under .separator */
+  display: block; /* Gör span till blockelement (100% bredd) */
 }
 
 /* Allmängällande stilar för textformatering */
 h1 {
-    margin: 0;              /* bort med inbyggd margin */
-    font-size: xx-large;
+  margin: 0; /* bort med inbyggd margin */
+  font-size: xx-large;
 }
 
 /* Sidfoten */
 footer {
-    background-color: #1abc9c;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    padding: 10px;
-    width: 100%;
-    max-width: 1000px;  /* responsiv som section */
-    margin: auto;       /* centrera */
-    box-sizing: border-box;       /* och "skuffar" därmed inte ut högra bordern */
+  background-color: #1abc9c;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  width: 100%;
+  max-width: 1000px; /* responsiv som section */
+  margin: auto; /* centrera */
+  box-sizing: border-box; /* och "skuffar" därmed inte ut högra bordern */
 }
-.divadd{
-    padding: 20px;
+.divadd {
+  padding: 20px;
 }
-.reqform{
-    margin:auto;
+.reqform {
+  margin: auto;
 }
-.butlabel{
-    size:small;
-    text-align: left;
+.butlabel {
+  size: small;
+  text-align: left;
 }
-.container{
-    width:800px;
-    background-color:lightcoral;
+.container {
+  width: 800px;
+  background-color: rgb(252, 88, 88);
 }
-.container h2{
-    padding:30px 50px;
+.container h2 {
+  padding: 30px 50px;
 }
-.profiledisp h2{
-        padding:30px 50px;
+.profiledisp h2 {
+  padding: 30px 50px;
 }
 .box {
-    border-style:solid;
-    border-color:#3D3D3D;
-    border-width:4px;
+  border-style: solid;
+  border-color: #3d3d3d;
+  border-width: 4px;
 }
 .comment {
-    width:300px;
-    border-style:solid;
-    border-color:#ffccfc;
-    border-width:4px;
+  width: 300px;
+  border-style: solid;
+  border-color: #ffccfc;
+  border-width: 4px;
 }
-.profiledisp{
-    width: 400px;
-    margin:20px 20px;
-    background-color:#1abc9c;
+.profiledisp {
+  width: 400px;
+  margin: 20px 20px;
+  background-color: #1abc9c;
 }
-.registerlist{
-    margin:auto;
-    list-style-type: none;
+.registerlist {
+  margin: auto;
+  list-style-type: none;
 }
-.registerlist li{
-    font-size:large;
-    margin:10px 5px;
+.registerlist li {
+  font-size: large;
+  margin: 10px 5px;
 }
-.registerlist h4{
-    color:gray;
-    font-size:large;
+.registerlist h4 {
+  color: gray;
+  font-size: large;
 }
 .registerlist input {
-    width: 300px;
-    height: 30px;
-    background-color:rgb(255, 231, 234);
-    border-right: 1px solid;
+  width: 300px;
+  height: 30px;
+  background-color: rgb(255, 231, 234);
+  border-right: 1px solid;
 }
 .registerlist textarea {
-    width: 350px;
-    height: 120px;
-    background-color:rgb(255, 231, 234);
-    border-right: 1px solid;
+  width: 350px;
+  height: 120px;
+  background-color: rgb(255, 231, 234);
+  border-right: 1px solid;
 }
-.nopclass{
-    margin:0;
-    padding:0;
-    text-decoration: line-through;
+.nopclass {
+  margin: 0;
+  padding: 0;
+  text-decoration: line-through;
 }
 
-.profile-picture img{
-    float: right;
-    display: block;
-    margin: 0px 10px 10px 0px;
+.profile-picture img {
+  float: right;
+  display: block;
+  margin: 0px 10px 10px 0px;
 }
-.ad{
-    margin:5px;
-    background-color: aqua;
+.ad {
+  margin: 5px;
+  background-color: aqua;
 }
-#registerbutton{
-    width: 30%;
-    height: 40px;
-    background-color:midnightblue;
-    border:none;
-    color:white;
-    font-size:larger;
-    cursor:pointer;
-    margin-bottom: 20px;
+#registerbutton {
+  width: 30%;
+  height: 40px;
+  background-color: green;
+  border: none;
+  color: white;
+  font-size: larger;
+  cursor: pointer;
+  margin-bottom: 20px;
+  border-radius: 25px;
 }
 #logout {
-    margin-right:20px;
-    float: right;
+  margin-right: 20px;
+  float: right;
 }
-#likeb{
-    border-style:none;
-    margin:5px 0px 10px 15px;
-    background-color:#1abc9c;
+#likeb {
+  border-style: none;
+  margin: 5px 0px 10px 15px;
+  background-color: #1abc9c;
 }
-#likeb:hover{
-    fill:darkblue;
+#likeb:hover {
+  fill: darkblue;
 }
-#likeb:active{
-    fill:rgb(51, 206, 51);
-   }
-#dislikeb{
-    border-style:none;
-    margin:5px 0px 10px 5px;
-    background-color:#1abc9c;
+#likeb:active {
+  fill: rgb(51, 206, 51);
 }
-#dislikeb:hover{
-    fill:darkblue;
+#dislikeb {
+  border-style: none;
+  margin: 5px 0px 10px 5px;
+  background-color: #1abc9c;
 }
-#dislikeb:active{
-    fill:rgb(206, 4, 45);
+#dislikeb:hover {
+  fill: darkblue;
 }
-CSS
-.box {
+#dislikeb:active {
+  fill: rgb(206, 4, 45);
+}
+CSS .box {
   display: none;
   background: #ccc;
   width: 200px;
@@ -209,38 +222,37 @@ CSS
 }
 .box {
   display: none;
-  background:palevioletred;
+  background: palevioletred;
 }
 #trigger:checked + .box {
-
   display: block;
 }
 
-
-
-
 /* Responsiv styling */
-@media (max-width:1200px) { /* Breakpoint vid <1200pxs skärmar (tablet) */
-    section, footer {
-        max-width: 1200px;  /* Göm "bakgrunden" på lanscape tablets */
-    }
-    body {
-        font-size: 120%;    /* Läslighet på minder skärmar */
-    }
+@media (max-width: 1200px) {
+  /* Breakpoint vid <1200pxs skärmar (tablet) */
+  section,
+  footer {
+    max-width: 1200px; /* Göm "bakgrunden" på lanscape tablets */
+  }
+  body {
+    font-size: 120%; /* Läslighet på minder skärmar */
+  }
 }
-@media (max-width:700px) { /* Breakpoint vid <700pxs skärmar (mobil portrait) */
-    nav li {
-        float: none;    /* Gör menyn vertikal */
-        width: 200px;   /* Minska på elementens bredd (bara för hover effekten) */
-        margin: auto;   /* Centrera */
-    }
-    header {
-        display: table;     /* Gör loggan full bredd */
-        width: 100%;        /* Gör menyn full bredd */
-        text-align: center;
-        font-size: x-large;
-    }
-    nav {
-        margin-top: 10px;   /* Lite space mellan meny och logo */
-    }
+@media (max-width: 700px) {
+  /* Breakpoint vid <700pxs skärmar (mobil portrait) */
+  nav li {
+    float: none; /* Gör menyn vertikal */
+    width: 200px; /* Minska på elementens bredd (bara för hover effekten) */
+    margin: auto; /* Centrera */
+  }
+  header {
+    display: table; /* Gör loggan full bredd */
+    width: 100%; /* Gör menyn full bredd */
+    text-align: center;
+    font-size: x-large;
+  }
+  nav {
+    margin-top: 10px; /* Lite space mellan meny och logo */
+  }
 }

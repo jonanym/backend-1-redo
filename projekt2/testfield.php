@@ -1,16 +1,22 @@
 <?php include "init.php" ?>
 <?php include "head.php" ?>
+<div class="container">
+<p>hej</p>
+<br>
+<br>
 
-<article class="box">
+<div>
     <h2>Detta är ett test</h2>
     <form action="testfield.php" method="post">
     <input type="submit" name="submit" id="submit" value="submit">
     </form>
-    </article>
-
+    </div>
+</div>
 <?php
 
 if(isset($_POST['submit'])){
+    print("FÖRE BRUTEN KOD");
+
     $name = "abc";
     $query = "SELECT username FROM users WHERE username = ?";
     $conn = create_conn();
@@ -18,17 +24,18 @@ if(isset($_POST['submit'])){
     $stmt->bind_param("s",$name);
     $stmt->execute();
     $result = $stmt->get_result();
+    
   
     /*$idquery = "SELECT id FROM users WHERE username = ?";
     $idstmt = $conn->prepare($idquery);
     $idstmt->bind_param("s",$name);
     $idstmt->execute();
     $idresult = $idstmt->get_result();
-    $idrow = */
+    $idrow = 
     
-  
+  */
     $row = mysqli_num_rows($result);
-    $content = $result[1];
+    $content = $result;
     
     print($row);
     print($content);

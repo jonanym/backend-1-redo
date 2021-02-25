@@ -42,6 +42,7 @@
         );
 
             include "accdelete.php";
+            echo("<a https://cgi.arcada.fi/~irjalajo/BP2/backend-projekt-1/projekt2/editprofile.php'>SKICKA MIG TILL EDITSIDAN<a/>");
       
         
 

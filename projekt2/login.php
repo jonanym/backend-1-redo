@@ -12,11 +12,16 @@
 
   if (isset($_POST['usr']) && isset($_POST['psw'])) //when form submitted
   {
+    $name = $_POST['usr'];
+    $password = $_POST['psw'];
+    print(" -> ". $password . " <- ");
+
     if($_POST['usr'] == $_POST['psw']){
       echo("<p>OBS fälten får inte vara tomma eller samma!</p>");
     } else {
 
-    if(empty(trim($_POST["usr"]))){
+
+   if(empty(trim($_POST["usr"]))){
       $usr_error = "Du kan inte lämna användarnamn tomt.";
       print($usr_error);
     } else{
@@ -28,14 +33,16 @@
       $psw_error = "Du kan inte lämna lösenord tomt.";
       print($psw_error);
 
-    } else{
+    } else{ 
+
+      // EFTER ATT HA PREDIKAT OM HUR BUGGIT DET HADE GÅTT... $password = stripslashes($name);... -_- egg on my face
+      
       $password = trim($_POST["psw"]);
-      $password = stripslashes($name);
-      print("PW klar ");
+      $password = stripslashes($password);
+      print("PW klar " .$password ." ");
     }
-    // removed från query temporärt: ("SELECT username, password FROM users WHERE username AND  password = '".md5($password)."');
-  
-    print($password);
+    
+  print($password);
   $hashedpassword = hash("sha256", $password);
   echo("<p>".$password."</p>");
   $conn = create_conn();

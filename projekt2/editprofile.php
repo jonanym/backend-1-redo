@@ -31,6 +31,7 @@
             $arslan = $row['salary'];
             $bio = $row['bio'];
             $password = $row['password'];
+            $bio = $row['bio'];
         
             echo(
             "
@@ -38,7 +39,7 @@
             <ul class='registerlist'>
                 <br>
 
-                <li><label>Användarnamn</label><br><h3>".$row['username']. "</h3><br>Byt användarnamn: <br><input type='text' name='anvandare' value='$username'/></li>
+                <li><label>Hejsan </label><h3>".$row['username']. "</h3><br>Byt användarnamn: <br><input type='text' name='anvandare' value='$username'/></li>
 
 
                 <li>Byt ditt namn:<br> <input type='text' name='namnet' value='$realname'/></li>
@@ -52,8 +53,9 @@
                 <input type='radio' name='preference' value='other' id='other'/><label for='other' class='butlabel'>Annan</label><br>
                 <input type='radio' name='preference' value='bothof' id='bothof'/><label for='bothof' class='butlabel'>Båda</label><br>
                 <input type='radio' name='preference' value='allof' id='allof'/><label for='allof' class='butlabel'>Alla</label></li>
-                <br><label>Profil BIO</label><br>
-                <p>".$row['bio']. "</p></li><br>
+                <br>
+                <label>Updatera bio</label><br>
+                <textarea name='comment' rows='5' cols='40' name=bioinput>$bio</textarea><br>
                 <input type='submit' name='submit' value='Updatera' id='registerbutton'><br>
                 </form>
                 

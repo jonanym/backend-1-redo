@@ -40,9 +40,9 @@
                 <li><label>Preferens</label><br><h3>".$row['realname']. "</h3></li>
             </ul><br><br>"
         );
-
+        echo("<a href='https://cgi.arcada.fi/~irjalajo/BP2/backend-projekt-1/projekt2/editprofile.php'>SKICKA MIG TILL EDITSIDAN<a/><br>");
             include "accdelete.php";
-            echo("<a https://cgi.arcada.fi/~irjalajo/BP2/backend-projekt-1/projekt2/editprofile.php'>SKICKA MIG TILL EDITSIDAN<a/>");
+            
       
         
 

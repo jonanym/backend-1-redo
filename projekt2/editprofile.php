@@ -1,7 +1,15 @@
-<?php
-        if ($_GET['user'] == $_SESSION['user']) {
+<?php include "init.php"; ?>
+<?php include "head.php"; ?>
 
-            $current = $_GET['user'];
+
+<div class="container">
+    <h2>Profilsida</h2>
+<?php
+
+
+        //if ($_GET['user'] == $_SESSION['user']) {
+            
+            //$current = $_GET['user'];
             $conn = create_conn();
             $user = $_SESSION['user'];
 
@@ -34,6 +42,7 @@
                 <li><label>Preferens</label><br><h3>".$row['realname']. "</h3></li>
             </ul><br><br>"
         );
-    } else {
-        header('Refresh:0; url=login.php');
-    }
+    //} else { header('Refresh:0; url=login.php'); }
+?>
+</div>
+    <?php include "footer.php"; ?>

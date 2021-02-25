@@ -28,18 +28,18 @@
             "<ul class='registerlist'>
                 <br>
 
-                <li><label>Användarnamn</label><br><h3>".$row['username']. "</h3><input type='text' name='uninput' value='Användarnamnet'/></li>
+                <li><label>Användarnamn</label><br><h3>".$row['username']. "</h3><input type='text' name='anvandare' value='Användarnamnet'/></li>
 
 
-                <li><label>Namn</label><br><h3>".$row['realname']. "</h3><input type='text' name='uninput'/></li>
-                <li><label>Email</label><br><h3>".$row['email']. "</h3><input type='text' name='uninput'/></li>
-                <li><label>Postnummer</label><br><h3>".$row['zipcode']. "</h3><input type='text' name='uninput'/></li>
+                <li><label>Namn</label><br><h3>".$row['realname']. "</h3><input type='text' name='namnet' value='Namnet'/></li>
+                <li><label>Email</label><br><h3>".$row['email']. "</h3><input type='text' name='email' value='Email'/></li>
+                <li><label>Postnummer</label><br><h3>".$row['zipcode']. "</h3><input type='text' name='zipcode' value='Zipcode'/></li>
 
                 <label>Profil BIO</label><br>
                 <p>".$row['bio']. "</p></li><br>
                 
-                <li><label>Årslön</label><h3>".$row['salary']. "</h3><input type='text' name='uninput'/></li>
-                <li><label>Preferens</label><br><h3>".$row['realname']. "</h3><input type='text' name='uninput'/></li>
+                <li><label>Årslön</label><h3>".$row['salary']. "</h3><input type='text' name='arslan' value='Årslön'/></li>
+                <li><label>Preferens</label><br><h3>".$row['realname']. "</h3><input type='text' name='preferens' value='Preferens'/></li>
             </ul><br><br>"
         );
 

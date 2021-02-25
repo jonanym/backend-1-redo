@@ -111,7 +111,7 @@ footer {
 }
 .container {
   width: 800px;
-  background-color: rgb(252, 88, 88);
+  background-color: rgb(156, 240, 243);
 }
 .container h2 {
   padding: 30px 50px;
@@ -172,7 +172,13 @@ footer {
   margin: 0px 10px 10px 0px;
 }
 .ad {
-  margin: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20em;
+  display: inline-block;
+  border: 5px solid #1c95a5;
+  margin: 20px;
+  padding: 10px;
   background-color: rgb(156, 240, 243);
 }
 #registerbutton {

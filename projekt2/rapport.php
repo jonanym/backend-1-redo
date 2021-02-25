@@ -12,10 +12,10 @@
     <br><br>
     Röda på username och comment så betyder att vi har joinat tabellerna och på det sättet kan man skapa user "identified" kommentarer.<br>
     Annars innehåller tabellerna ganska basic saker och det är en relationel databas. Med relationel databas kan man till exempel ha <br>
-    hund - ras - läng. 
+    hund - ras - längd och querya med php informationen från databasen. 
     <br><br>
     På det sättet kan man kategorisera massor olika saker och använda det på sin webbsida för att strukturera och hämta<br>
-    information. T.ex webbshopar och större sidor vart man har massor med olika kategorier.</p>
+    information. T.ex i webbshopar och större sidor vart man har massor med olika kategorier.</p>
     <br>
     <h2>Infopaket om SQL kommandon</h2>
     <br>
@@ -30,7 +30,7 @@
         
 <br><br>
     
-<h2>Niklas's kommentar sektion</h2>
+<h2>Niklas kommentar sektion</h2>
 Php har varit för mig kanske det roligaste kod språket hittills och jag kommer säkerligen att fördjupa mig i det ordentligt efter att kursen är slut.
 <br> <br>
 Vi hade korona skräck i pojkens skola så jag tappade mycket aktivt deltagande från min del i det här projektet, som jag är ledsen över, men mina arbetskompisar har varit väldigt symppisar så massor tackar åt dem, specielt Jonas. 

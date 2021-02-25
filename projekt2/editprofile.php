@@ -2,7 +2,7 @@
 <?php include "head.php"; ?>
 
 
-<div class="container">
+<div class="editprofile">
     <h2>Editera din profil</h2>
 <?php
 

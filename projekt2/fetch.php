@@ -31,12 +31,14 @@ function fetchAndWrite($sql) {
     if ($result = $conn->query($sql)) {
         //skapa en while loop för att hämta varje rad
         while ($row = $result->fetch_assoc()) {
+            $prefArr = array('Manlig', 'Kvinnliga', 'Annan', 'Båda', 'Alla');
+            $prefGet = $row['preference'];
             //skriv ut endast ett värde (en kolumn en rad -- en cell)
             print("<p class='ad'>");
             print("Användare i databasen: " . $row['realname'] . "<br>");
             print("Personens lön: " . $row['salary'] . "<br>");
             $prefArr = ['Manlig', 'Kvinnliga', 'Annan', 'Båda', 'Alla'];
-            print("Preferens: " . $row['preference'] . "<br>");
+            print("Preferens: " . $prefArr[$prefGet] . "<br>");
             print("<a href='./profile.php?user=".$row['username']."'>Kommentera!</a></p>");
         }
 

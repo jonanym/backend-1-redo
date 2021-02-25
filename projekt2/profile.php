@@ -8,6 +8,8 @@
 
     <?php
 
+    $prefArr = array('Manlig', 'Kvinnliga', 'Annan', 'Båda', 'Alla');
+
         if ($_GET['user'] == $_SESSION['user']) {
 
             //if(isset($_SESSION['user'])){
@@ -24,7 +26,7 @@
 
             $result = $stmt->get_result(); // Returnar data i form av ett msqli_result objekt
             $row = $result->fetch_assoc(); // Ta ut data från mysqli_result objekt till en ass array
-
+            $prefnr = $row['preference'];
             echo(
             "<ul class='registerlist'>
                 <br>
@@ -37,7 +39,7 @@
                 <p>".$row['bio']. "</p></li><br>
                 
                 <li><label>Årslön</label><h3>".$row['salary']. "</h3></li></li><br>
-                <li><label>Preferens</label><br><h3>".$row['realname']. "</h3></li>
+                <li><label>Preferens</label><br><h3>".$prefArr[$prefnr-1]. "</h3></li>
             </ul><br><br>"
         );
         echo("<a href='../projekt2/editprofile.php'>SKICKA MIG TILL EDITSIDAN<a/><br>");
@@ -59,7 +61,7 @@
 
         $result = $stmt->get_result(); // Returnar data i form av ett msqli_result objekt
         $row = $result->fetch_assoc();
-
+        $prefnr = $row['preference'];
         echo(
             "<ul class='registerlist'>
                 <br>
@@ -72,7 +74,7 @@
                 <p>".$row['bio']. "</p></li><br>
                 
                 <li><label>Årslön</label><h3>".$row['salary']. "</h3></li></li><br>
-                <li><label>Preferens</label><br><h3>".$row['realname']. "</h3></li>
+                <li><label>Preferens</label><br><h3>".$prefArr[$prefnr-1]. "</h3></li>
             </ul><br><br>"
         );
         include "like.php";
@@ -89,7 +91,7 @@
 
         $result = $stmt->get_result(); // Returnar data i form av ett msqli_result objekt
         $row = $result->fetch_assoc();
-
+        $prefnr = $row['preference'];
         echo(
             "<ul class='registerlist'>
                 <br>
@@ -102,7 +104,7 @@
                 <p>".$row['bio']. "</p></li><br><br>
                 
                 <li><span class='nopclass'>Årslön</span><h4>Endast de som är inloggade kan se årslön</h4></li></li><br>
-                <li><label>Preferens</label><br><h3>".$row['realname']. "</h3></li>
+                <li><label>Preferens</label><br><h3>".$prefArr[$prefnr-1]. "</h3></li>
             </ul><br><br>"
         );
         // Kommentarsformulär

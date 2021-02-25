@@ -14,11 +14,11 @@
                 <textarea name="comment" rows="5" cols="40" name=bioinput></textarea><br>
                 <li><label>Årslön</label> <input type="text" name="ysinput"/></li><br>
                 <li><label>Preferens</label><br>
-                <input type="radio" name="preference" value="male" id="male"/><label for="male" class="butlabel">Man</label><br>
-                <input type="radio" name="preference" value="female" id="female"/><label for="female" class="butlabel">Kvinna</label><br>
-                <input type="radio" name="preference" value="other" id="other"/><label for="other" class="butlabel">Annan</label><br>
-                <input type="radio" name="preference" value="bothof" id="bothof"/><label for="bothof" class="butlabel">Båda</label><br>
-                <input type="radio" name="preference" value="allof" id="allof"/><label for="allof" class="butlabel">Alla</label></li><br><br>
+                <input type="radio" name="preference" value="1" id="male"/><label for="male" class="butlabel">Man</label><br>
+                <input type="radio" name="preference" value="2" id="female"/><label for="female" class="butlabel">Kvinna</label><br>
+                <input type="radio" name="preference" value="3" id="other"/><label for="other" class="butlabel">Annan</label><br>
+                <input type="radio" name="preference" value="4" id="bothof"/><label for="bothof" class="butlabel">Båda</label><br>
+                <input type="radio" name="preference" value="5" id="allof"/><label for="allof" class="butlabel">Alla</label></li><br><br>
                 <input type="submit" name="submit" value="Slutför registreringen" id="registerbutton"><br>
             </ul>
     </form>
@@ -42,7 +42,7 @@ $email = test_input($_POST['eminput']);
 $zip = test_input($_POST['pninput']); 
 $bio = test_input($_POST['bioinput']); 
 $salary = test_input($_POST['ysinput']);
-$preference = "1"; //test_input($_POST['preference']);
+$preference = test_input($_POST['preference']);
 
     // OM båda passwordena är samma går vi vidare
     if ($password == $repassword){

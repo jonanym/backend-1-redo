@@ -57,12 +57,18 @@ $preference = "1"; //test_input($_POST['preference']);
     $statement->bind_param("ssssisii",$username, $realname, $password, $email, $zip, $bio, $salary, $preference);
     $statement->execute();
     
-    
-        // OM statement executades = Data har skrivits in i tabellen. SUCCESS.
-        if ($statement->execute()) {
-            $conn->close();
+    $checkquery = "SELECT username FROM users WHERE username = ?";
+    $stmt = $conn->prepare($checkquery); // Prepare returnerar mysqli_stmt objekt
+    $stmt->bind_param("s",$username); // Nuförst skickar den användarinmatad data till sql
+    $stmt->execute(); // execute returnar true eller false
+    $result = $stmt->get_result();
+    $answer = mysqli_num_rows($result);
 
+        // OM statement executades = Data har skrivits in i tabellen. SUCCESS.
+        if ($answer == 1) {
+                $_SESSION['user'] = $username;
                 print("Du har registrerats!");
+                header('Refresh:1; url=https://cgi.arcada.fi/~irjalajo/BP2/backend-projekt-1/projekt2/profile.php?user='.$username);
 
             } else {
                 // Ifall statement failade att executa.
@@ -72,6 +78,6 @@ $preference = "1"; //test_input($_POST['preference']);
 
         } else {
             // else för lösenords dubbleteringen misslyckades
-            echo("<h3>Du lyckades inte skriva ett lösenord två gåner</h3>");
+            echo("<h3>Du lyckades inte skriva ett lösenord två gånger</h3>");
     }
 } 

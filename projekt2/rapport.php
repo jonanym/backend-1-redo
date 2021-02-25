@@ -38,6 +38,14 @@ Vi hade korona skräck i pojkens skola så jag tappade mycket aktivt deltagande 
 Det här var första gången som vi kodade tillsammans med någon annan och det känns nog intimiderande men roligt. Om vi började med det här redan tidigare så kunde jag tänka mig att det skulle gå smidigare. 
 <br><br>Jag tyckte speciellt om idén att koda i par vart ena är drivern och andra är navigatorn och det stöder sig ganska långt på det som man lärt sig i psykologin och annanstans. 
 <br><br>
+<h2>Jonathans kommentar sektion</h2>
+Jag tycker att php nog har verkat som ett väldigt roligt och relativt lättanvänt språk, men tyvärr lite som för niklas så råkade jag ha en massa andra saker på g och lite svårt med motivationen med distansstudier så har haft en hel del svårigheter med kursen.
+<br><br>
+Jonas har verkligen varit till stor hjälp och och varit en extremt duktig/skicklig arbetskamrat, men niklas vet hur man håller humöret uppe och har nog hjälpt så mykke han har kunnat :)
+Att koda tillsammans har nog varit roligt och definitivt lättare än att tvingas göra allting själ. Gitt har också sakta men säkert blivit klarare och lättare att använda. Hade också en del problem med gitt att det inte ville pusha mina ändringar men fick npg problemet fixat tror jag
+<br><br>
+Själv tänker jag nog gå igenom kursen pånytt på egen hand och försöka gå igenom allt med lite bättre tid och försöka fatta php lite bättre än jag gjort hittills
+<br><br>
 <br><br><br>
 <marquee direction="left" height="100px" scrollamount="6"><i>
 SQL is designed for a specific purpose: to query data contained in a relational database. SQL is a set-based, declarative programming language, not an imperative programming language like C or BASIC.

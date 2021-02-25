@@ -28,18 +28,23 @@
             "<ul class='registerlist'>
                 <br>
 
-                <li><label>Användarnamn</label><br><h3>".$row['username']. "</h3><input type='text' name='anvandare' value='Användarnamnet'/></li>
+                <li><label>Användarnamn</label><br><h3>".$row['username']. "</h3><br>Byt användarnamn: <br><input type='text' name='anvandare'/></li>
 
 
-                <li><label>Namn</label><br><h3>".$row['realname']. "</h3><input type='text' name='namnet' value='Namnet'/></li>
-                <li><label>Email</label><br><h3>".$row['email']. "</h3><input type='text' name='email' value='Email'/></li>
-                <li><label>Postnummer</label><br><h3>".$row['zipcode']. "</h3><input type='text' name='zipcode' value='Zipcode'/></li>
-
-                <label>Profil BIO</label><br>
+                <li>Byt ditt namn:<br> <input type='text' name='namnet' value=''/></li>
+                <li>Byt ditt email:<br> <input type='text' name='email'/></li>
+                <li>Byt zipcode:<br> <input type='text' name='zipcode'/></li>
+                <li>Byt årslön:<br> <input type='text' name='arslan' value='Årslön'/></li>
+                <li><br>Byt Preferense:<br></li>
+                <input type='radio' name='preference' value='male' id='male'/><label for='male' class='butlabel'>Man</label><br>
+                <input type='radio' name='preference' value='female' id='female'/><label for='female' class='butlabel'>Kvinna</label><br>
+                <input type='radio' name='preference' value='other' id='other'/><label for='other' class='butlabel'>Annan</label><br>
+                <input type='radio' name='preference' value='bothof' id='bothof'/><label for='bothof' class='butlabel'>Båda</label><br>
+                <input type='radio' name='preference' value='allof' id='allof'/><label for='allof' class='butlabel'>Alla</label></li>
+                <br><label>Profil BIO</label><br>
                 <p>".$row['bio']. "</p></li><br>
                 
-                <li><label>Årslön</label><h3>".$row['salary']. "</h3><input type='text' name='arslan' value='Årslön'/></li>
-                <li><label>Preferens</label><br><h3>".$row['realname']. "</h3><input type='text' name='preferens' value='Preferens'/></li>
+                
             </ul><br><br>"
         );
 

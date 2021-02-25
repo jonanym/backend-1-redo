@@ -42,7 +42,8 @@
                 <li><label>Preferens</label><br><h3>".$prefArr[$prefnr-1]. "</h3></li>
             </ul><br><br>"
         );
-        echo("<a href='../projekt2/editprofile.php'>SKICKA MIG TILL EDITSIDAN<a/><br>");
+        echo("<a href='../projekt2/editprofile.php'><button id='editProfileButton'>Byt info</button><a/><br>");
+        
             include "accdelete.php";
             
       

@@ -133,7 +133,7 @@ footer {
 .profiledisp {
   width: 400px;
   margin: 20px 20px;
-  background-color: #1abc9c;
+  background-color: rgb(156, 240, 243);
 }
 .registerlist {
   margin: auto;
@@ -173,7 +173,7 @@ footer {
 }
 .ad {
   margin: 5px;
-  background-color: aqua;
+  background-color: rgb(156, 240, 243);
 }
 #registerbutton {
   width: 30%;
@@ -269,4 +269,22 @@ CSS .box {
   margin-left: auto;
   margin-right: auto;
   width: 50em;
+}
+
+#editProfileButton {
+  display: inline-block;
+  background-color: green;
+  border-radius: 10px;
+  border: 4px double #cccccc;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
 }

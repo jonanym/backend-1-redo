@@ -1,7 +1,7 @@
 <div class="container">
     <h2>Registrerings uppgifter</h2>
     
-    <form class="reqform" action="https://cgi.arcada.fi/~irjalajo/BP2/backend-projekt-1/projekt2/index.php?stage=signup" method="post">
+    <form class="reqform" action="../projekt2/index.php?stage=signup" method="post">
         <ul class="registerlist">
             <br>
                 <li><label>Användarnamn</label><br><input type="text" name="uninput"/></li>

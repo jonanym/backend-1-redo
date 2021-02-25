@@ -3,7 +3,7 @@
 
 <article>
 <div class="profiledisp">
-    <h2>Kanske Dendär?</h2>
+    <h2 id="profilHeader">Profilsida</h2>
 
 
     <?php

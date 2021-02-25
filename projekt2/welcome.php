@@ -1,4 +1,4 @@
-<p>På denna sajt kan du inte se all information förän du har loggat in eller registrerat dig</p>
+<p>Logga in dig för att unleasha the full power of KISS KISS BANG BANG!</p>
     <a href="index.php?stage=signin"><input type="button" value="logga in"></a>
     <a href="index.php?stage=signup"><input type="button" value="registrera dig" id="registbut"></a><br><br><br>
     

@@ -138,6 +138,7 @@ footer {
 .registerlist {
   margin: auto;
   list-style-type: none;
+  text-shadow: 1px 1px white;
 }
 .registerlist li {
   font-size: large;
@@ -255,4 +256,11 @@ CSS .box {
   nav {
     margin-top: 10px; /* Lite space mellan meny och logo */
   }
+}
+#profilHeader {
+  color: maroon;
+  font-size: larger;
+  outline: 1px solid white;
+  justify-content: center;
+  text-shadow: 1px 1px white;
 }

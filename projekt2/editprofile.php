@@ -3,7 +3,7 @@
 
 
 <div class="container">
-    <h2>Profilsida</h2>
+    <h2>Editera din profil</h2>
 <?php
 
 
@@ -24,17 +24,28 @@
             $row = $result->fetch_assoc(); // Ta ut data från mysqli_result objekt till en ass array
 
             // TA EXEMPEL FRÅN ANVÄNDARNAMN
+            $username = $row['username'];
+            $realname = $row['realname'];
+            $email = $row['email'];
+            $zipcode = $row['zipcode'];
+            $arslan = $row['salary'];
+            $bio = $row['bio'];
+            $password = $row['password'];
+        
             echo(
-            "<ul class='registerlist'>
+            "
+            <form action='./change.php' method='post'>
+            <ul class='registerlist'>
                 <br>
 
-                <li><label>Användarnamn</label><br><h3>".$row['username']. "</h3><br>Byt användarnamn: <br><input type='text' name='anvandare'/></li>
+                <li><label>Användarnamn</label><br><h3>".$row['username']. "</h3><br>Byt användarnamn: <br><input type='text' name='anvandare' value='$username'/></li>
 
 
-                <li>Byt ditt namn:<br> <input type='text' name='namnet' value=''/></li>
-                <li>Byt ditt email:<br> <input type='text' name='email'/></li>
-                <li>Byt zipcode:<br> <input type='text' name='zipcode'/></li>
-                <li>Byt årslön:<br> <input type='text' name='arslan' value='Årslön'/></li>
+                <li>Byt ditt namn:<br> <input type='text' name='namnet' value='$realname'/></li>
+                <li>Byt ditt email:<br> <input type='text' name='email' value='$email'/></li>
+                <li>Byt zipcode:<br> <input type='text' name='zipcode' value='$zipcode'/></li>
+                <li>Byt årslön:<br> <input type='text' name='arslan' value='$arslan'/></li>
+                <li>Byt password:<br> <input type='text' name='password'/></li>
                 <li><br>Byt Preferense:<br></li>
                 <input type='radio' name='preference' value='male' id='male'/><label for='male' class='butlabel'>Man</label><br>
                 <input type='radio' name='preference' value='female' id='female'/><label for='female' class='butlabel'>Kvinna</label><br>
@@ -43,6 +54,8 @@
                 <input type='radio' name='preference' value='allof' id='allof'/><label for='allof' class='butlabel'>Alla</label></li>
                 <br><label>Profil BIO</label><br>
                 <p>".$row['bio']. "</p></li><br>
+                <input type='submit' name='submit' value='Updatera' id='registerbutton'><br>
+                </form>
                 
                 
             </ul><br><br>"

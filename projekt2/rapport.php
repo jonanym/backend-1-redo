@@ -38,6 +38,7 @@ Vi hade korona skräck i pojkens skola så jag tappade mycket aktivt deltagande 
 Det här var första gången som vi kodade tillsammans med någon annan och det känns nog intimiderande men roligt. Om vi började med det här redan tidigare så kunde jag tänka mig att det skulle gå smidigare. 
 <br><br>Jag tyckte speciellt om idén att koda i par vart ena är drivern och andra är navigatorn och det stöder sig ganska långt på det som man lärt sig i psykologin och annanstans. 
 <br><br>
+<?php include "jonas.php"?>
 <br><br><br>
 <marquee direction="left" height="100px" scrollamount="6"><i>
 SQL is designed for a specific purpose: to query data contained in a relational database. SQL is a set-based, declarative programming language, not an imperative programming language like C or BASIC.

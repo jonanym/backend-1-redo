@@ -1,4 +1,4 @@
-<?php include "init.php" ?>
+  <?php include "init.php" ?>
 <?php include "head.php" ?>
 <div class="container">
 <p>hej</p>
@@ -6,17 +6,24 @@
 <br>
 
 <div>
-    <h2>Detta är ett test</h2>
-    <form action="testfield.php" method="post">
-    <input type="submit" name="submit" id="submit" value="submit">
-    </form>
-    </div>
+<form class="pref" action="https://cgi.arcada.fi/~irjalajo/BP2/backend-projekt-1/projekt2/testfield.php" method="post">
+<input type="radio" name="preference" value="1" id="male"/><label for="male" class="butlabel">Man</label><br>
+                <input type="radio" name="preference" value="2" id="female"/><label for="female" class="butlabel">Kvinna</label><br>
+                <input type="radio" name="preference" value="3" id="other"/><label for="other" class="butlabel">Annan</label><br>
+                <input type="radio" name="preference" value="4" id="bothof"/><label for="bothof" class="butlabel">Båda</label><br>
+                <input type="radio" name="preference" value="5" id="allof"/><label for="allof" class="butlabel">Alla</label></li><br><br>
+                <input type="submit" name="submit" value="Slutför registreringen" id="registerbutton"><br>
 </div>
 <?php
 
 if(isset($_POST['submit'])){
-    print("FÖRE BRUTEN KOD");
+  $nummer = $_POST['preference'];
+  print($nummer);
+  $prefArr = array('Manlig', 'Kvinnliga', 'Annan', 'Båda', 'Alla');
+  print($prefArr[$nummer-1]);
 
+
+    /*
     $name = "abc";
     $query = "SELECT username FROM users WHERE username = ?";
     $conn = create_conn();
@@ -26,21 +33,21 @@ if(isset($_POST['submit'])){
     $result = $stmt->get_result();
     
   
-    /*$idquery = "SELECT id FROM users WHERE username = ?";
+    $idquery = "SELECT id FROM users WHERE username = ?";
     $idstmt = $conn->prepare($idquery);
     $idstmt->bind_param("s",$name);
     $idstmt->execute();
     $idresult = $idstmt->get_result();
     $idrow = 
     
-  */
+  
     $row = mysqli_num_rows($result);
     $content = $result;
     
     print($row);
     print($content);
     
-    /*print("stage 1 ");
+    print("stage 1 ");
     $name = "abc";
 
     print($name);

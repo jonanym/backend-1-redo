@@ -46,6 +46,7 @@ Att koda tillsammans har nog varit roligt och definitivt lättare än att tvinga
 <br><br>
 Själv tänker jag nog gå igenom kursen pånytt på egen hand och försöka gå igenom allt med lite bättre tid och försöka fatta php lite bättre än jag gjort hittills
 <br><br>
+<?php include "jonas.php"?>
 <br><br><br>
 <marquee direction="left" height="100px" scrollamount="6"><i>
 SQL is designed for a specific purpose: to query data contained in a relational database. SQL is a set-based, declarative programming language, not an imperative programming language like C or BASIC.

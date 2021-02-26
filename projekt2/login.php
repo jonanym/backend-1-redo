@@ -14,7 +14,6 @@
   {
     $name = $_POST['usr'];
     $password = $_POST['psw'];
-    print(" -> ". $password . " <- ");
 
     if($_POST['usr'] == $_POST['psw']){
       echo("<p>OBS fälten får inte vara tomma eller samma!</p>");
@@ -27,7 +26,6 @@
     } else{
       $name = trim($_POST["usr"]);
       $name = stripslashes($name);
-      print("Namn klar ");
     }
     if(empty(trim($_POST["psw"]))){
       $psw_error = "Du kan inte lämna lösenord tomt.";
@@ -39,12 +37,10 @@
       
       $password = trim($_POST["psw"]);
       $password = stripslashes($password);
-      print("PW klar " .$password ." ");
     }
     
   print($password);
   $hashedpassword = hash("sha256", $password);
-  echo("<p>".$password."</p>");
   $conn = create_conn();
   $query = "SELECT * FROM users WHERE username = ?";
   $stmt = $conn->prepare($query);
@@ -58,11 +54,6 @@
   $result = $stmt->get_result();
   print("get result");
   $row = mysqli_fetch_assoc($result);
-  print("fetched assoc");
-  echo("<br><br>");
-  print($hashedpassword);
-  echo("<br>");
-  print($row['password']);
   if($hashedpassword==$row['password']){
     print("Success");
     $_SESSION['user'] = $name;
@@ -81,7 +72,7 @@
   } 
   
   }else{ 
-    echo "<h3>Användarnamn eller lösenord fanns ej</h3></div>";
+    echo "<h3>Välkommen logga in på existerande konto</h3></div>";
   
 
   ?><div class="box">

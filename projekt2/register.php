@@ -67,12 +67,12 @@ $preference = test_input($_POST['preference']);
         // OM statement executades = Data har skrivits in i tabellen. SUCCESS.
         if ($answer == 1) {
                 $_SESSION['user'] = $username;
-                print("Du har registrerats!");
+                echo("Du har registrerats!");
                 header('Refresh:1; url=https://cgi.arcada.fi/~irjalajo/BP2/backend-projekt-1/projekt2/profile.php?user='.$username);
 
             } else {
                 // Ifall statement failade att executa.
-                print("error" .$conn->error);
+                echo("error" .$conn->error);
 
             }
 

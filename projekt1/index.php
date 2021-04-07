@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php 
-
 session_start();
 include "functions.php"
-
 ?>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -38,7 +36,7 @@ $ipAdress = $_SERVER['REMOTE_ADDR'];
 // konkatenering med punkt, märk att PHP kod producerar HTML resurser
 print("<p>Servern snurrar på port: " . $serverPort . "</p>");
 print("<p>Php versionen är: " . phpversion(). "</p>");
-print("<p>Apache versionen är: " . apache_get_version(). "</p>");
+//print("<p>Apache versionen är: " . apache_get_version(). "</p>");
 print "IP adressen är: ".$_SERVER['REMOTE_ADDR'];
 
 
@@ -76,6 +74,7 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
             <form action="index.php" method="post">
                 Dag: <input type="text" name="dag"><br>
                 Månad: <input type="text" name="manad"><br>
+                År: <input type="text" name="ar"><br>
                 <input type="submit" value="Räkna"><br>
 
                 <?php
@@ -86,6 +85,7 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
             // collect value of input field
             $dag = $_POST['dag'];
             $manad = $_POST['manad'];
+            $ar = $_POST['ar'];
             if (empty($dag) && empty($manad)) {
                 echo "du måste fylla i dag och månad";
             } 
@@ -101,12 +101,12 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
         
             else {
 
-               $datum = date("d.m.Y", mktime(0,0,0,$manad,$dag));
-                   $Veckodag = date("l", mktime(0,0,0,$manad,$dag));
+               $datum = date("d.m.Y", mktime(0,0,0,$manad,$dag,$ar));
+                   $Veckodag = date("l", mktime(0,0,0,$manad,$dag,$ar));
                    print("<p>Den " . $datum . " är en " . $Veckodag . " och till den dagen är det: </p>");
         
                    $date1 = date('d.m.Y H:i:s', time());
-                   $date2 = date('d.m.Y H:i:s', mktime(0,0,0,$manad,$dag));
+                   $date2 = date('d.m.Y H:i:s', mktime(0,0,0,$manad,$dag,$ar));
                    //print($date1); 
                    //print("<br>");
                    //print($date2);
@@ -118,7 +118,14 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
                    $minutes = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24  - $hours*60*60)/ 60); 
                    $seconds = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
                    print("<br>");
-                   printf("%d days, %d hours, ". "%d minutes, %d seconds",$days, $hours, $minutes, $seconds);
+                   printf("%d år, %d månader, %d dagar, %d timmar, ". "%d minuter, %d sekunder",$years, $months, $days, $hours, $minutes, $seconds);
+
+                   //if($date2.isbefore($date1)){
+                     //  print("<br><br>datumet är i framtiden");
+                   //}
+                   //else{
+                    //   print("<br><br>datumet är i det förflutna");
+                   //}
             }
         }
         ?>
@@ -173,12 +180,12 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
             <?php
                 // uppg 5 - ge användaren en cookie
                 $cookie_name = "username";
-                $cookie_value = "okända främlingen";
+                $cookie_value = "gäst";
                 setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/");
 
                 //Kolla ifall användaren har en cookie
                 if(isset($_COOKIE["username"])){
-                print("<p>Välkommen " . $cookie_value . "!</p>");
+                //print("<p>Välkommen " . $cookie_value . "!</p>");
                 //Räkna ut när du senaste besökt
                 $senasteCookie = "senastebesok";
                 $senasteVal = date("d.m.Y-H:i:s", time());
@@ -188,12 +195,12 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
                 }
                 //Om du var här första gången
                 else{
-                print("<p>DU är första gången på sidan</p>");
+                print("<p>Välkommen, du är här första gången</p>");
                 }
 
                 
 
-?>
+    ?>
 
         </article>
 
@@ -214,6 +221,8 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
                 // "Session abc123 == $_SESSION['user']=jonathan";
                 $_SESSION['user'] = "jonathan";
                 $_SESSION['passwd'] = "superhemlis";
+                print("<br><br><a href = 'darkweb.php'> DARK WEB</a><br>");
+                print("<br> Du är inloggad som jonathan");
             //print("<p>Endast Jonathan har tillgång till Dark Web</>");
             }
 
@@ -225,6 +234,8 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
             {
                 $_SESSION['user'] = "admin";
                 $_SESSION['passwd'] = "hemlighet";
+                print("<br><br><a href = 'admin.php'> Admin</a>");
+
             }
             else 
             {
@@ -232,9 +243,7 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
                 //print("<p>Inga hemlisar för skurkar</p>");
                 //$_SESSION['user'] = "intejonathan";
             }
-            print("<br><br><a href = 'darkweb.php'> DARK WEB</a><br>");
-            print("<a href = 'admin.php'> Admin</a>");
-
+           
 
             //Todo gör s¨att man returneras till huvudsidan om man inte har loggat in med rätta login uppgifter 
 
@@ -246,7 +255,7 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
             <?php
             print("<a href = 'upload.php'> Uppg 7</a>");
             ?>
-            
+
         </article>
 
 
@@ -254,67 +263,69 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
 
         <article>
             <h2>Uppg 8 - besöksräknare</h2>
-                     
+
             <?php
-            // Väljer fiö
-$path = 'counter.txt';
-
-// Läser hur mpnga de finns från förut
-$file  = fopen( $path, 'r' );
-$count = fgets( $file, 1000 );
-fclose( $file );
-
-// Lägger till +1
-$count = abs( intval( $count ) ) + 1;
-
-// Skriver ut det på sidan
-echo "{$count} hits\n"; 
-print("<br>");
-
-// öppnar den o skriver nya numret dit.
-$file = fopen( $path, 'w' );
-fwrite( $file, $count );
-fclose( $file );
             
-                //Skriver ip adressen till counter.txt
-            $ipAdress = $_SERVER['REMOTE_ADDR'];
-            //Välj fil
-            $file = "counter.txt"; 
-            //lägg till
-            $file = fopen($file, "a"); //lägg till
-            $data = "<b>IP</b>: $ipAdress<br>";
-            //skriv ip:n i filen
-            fwrite($file, $data); 
-             //Stängt filen
-            fclose($file);
-            echo "Your IP adddress <b>$ipAdress</b> has been logged :D";
-            
-            
-                
-           
+            $myfile = fopen("besok.log", "a+") or die("Unable to open file!");
+            $txt = "besök: ";
+            fwrite($myfile, $txt);
+            $ip = $_SERVER['REMOTE_ADDR'];
+            fwrite($myfile, $ip);
+            $tidpunkt = time();
+            fwrite($myfile, $tidpunkt."\n");
+            fclose($myfile);
 
+            $myfile = fopen("besok.log", "r") or die("Unable to open file!");
+            $line = 0;
+            while (!feof($myfile)){
+                if(fgets($myfile,1048576)){
+                    $lines++;
+                }
+            }
 
-            print("<br>");
-            print("<br>");
-            print("<br>");
-            print("<br>");
-            print("<br>");
-            print("<br>");        
-?>
+            fclose($myfile);
+            //echo fread($myfile,filesize("besok.log"));
+            echo $lines;
+
+     
+        ?>
 
             <article>
-            <h2>Uppg 9</h2>
-        
-            Comment: <br>
-            <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea><br>
-            <input type="submit" name="submit" value="Submit"> 
+                <h2>Uppg 9</h2>
+
+                Comment: <br>
+
+                <form action="index.php" method="post">
+                <textarea name="comment" rows="5" cols="40"></textarea><br>
+                <input type="submit" value="Kommentera"><br>
+
+                <?php
+                $myfile = fopen("gästbok.log", "a+") or die("Unable to open file!");
+                $comment = $_REQUEST["comment"];
+                fwrite($myfile, $comment."\n");
+                fclose($myfile);
+
+
+           // $myfile = fopen("gästbok.log", "a+") or die("Unable to open file!");
+                if ($myfile = fopen("gästbok.log", "r")) {
+                    while(!feof($myfile)) {
+                        $line = fgets($myfile);
+                        print("<br>");
+                        print($line);
+                    }
+                    fclose($myfile);
+                }
+                
+                //echo fread($myfile,filesize("gästbok.log"));
+                //fclose($myfile);
+                ?>
+            </form>
+
             <?php
-           //Impossiburu
             print("<br>");
             print("<br>");
             print("<br>");
             print("<br>");
-            print("<br>");    
             ?>
             </article>
 
@@ -325,5 +336,6 @@ fclose( $file );
 
 <!-- Script kan köras efter att sidan laddats in -->
 <script src="script.js"></script>
+
 
 </html>

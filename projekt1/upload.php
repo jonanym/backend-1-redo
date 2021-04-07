@@ -45,39 +45,41 @@ if(isset($_POST["submit"])) {
     echo "File is an image - " . $check["mime"] . ".";
     $uploadOk = 1;
   } else {
-    echo "File is not an image.";
+    echo "Filen du försöker ladda upp är inte en bild";
     $uploadOk = 0;
   }
 }
 
 // Check if file already exists
 if (file_exists($target_file)) {
-  echo "Sorry, file already exists.";
+  echo "Filen finns redan";
   $uploadOk = 0;
 }
 
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
-  echo "Sorry, your file is too large.";
+else if ($_FILES["fileToUpload"]["size"] > 500000) {
+  echo "Tyvärr är din fil för stor";
   $uploadOk = 0;
 }
 
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+else if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
-  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+  echo "Tyvärr , bara JPG, JPEG, PNG & GIF filer är tillåtna";
   $uploadOk = 0;
 }
 
 // Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
+else if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
-} else {
+} 
+else 
+{
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " har blivit uppladdad";
   } else {
-    echo "Sorry, there was an error uploading your file.";
+    echo "Tyvärr det skedde en error";
   }
 }
 
@@ -93,7 +95,7 @@ if(is_dir($dir_path))
         if($files[$i] !='.' && $files[$i] !='..')
         {
             // get file name
-            echo "File Name -> $files[$i]<br>";
+            echo "<br>File Name -> $files[$i]<br>";
             
             // get file extension
             $file = pathinfo($files[$i]);
@@ -110,7 +112,7 @@ if(is_dir($dir_path))
     }
 }
 
-print("<br><br><a href = 'index.php'> Tillbacka</a>");
+print("<br><br><a href = 'index.php'> Tillbaka </a>");
 
 ?>
 

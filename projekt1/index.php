@@ -297,28 +297,47 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
 
                 <form action="index.php" method="post">
                 <textarea name="comment" rows="5" cols="40"></textarea><br>
-                <input type="submit" value="Kommentera"><br>
+                <input type="submit" value="Kommentera" name="submit"><br>
 
-                <?php
-                $myfile = fopen("gästbok.log", "a+") or die("Unable to open file!");
-                $comment = $_REQUEST["comment"];
-                fwrite($myfile, $comment."\n");
-                fclose($myfile);
+             <?php   
+
+             if ($_SERVER['REQUEST_METHOD'] == "POST"){
+                 $comment = $_REQUEST['comment'];
+                    if(empty($comment)){
+                        print("du måste skriva en kommentar <br>");
+                    }
+
+                    else{
+                         $myfile = fopen("gästbok.log", "a+") or die("Unable to open file!");
+                        $comment = "Din kommentar: ".$comment;
+                        $timestamp = " <br>tidpunkten för din kommentar :". date('H:i:s', );
+                        fwrite($myfile, $comment);
+                        fwrite($myfile, $timestamp."\n");
+                        fclose($myfile);
+                        
+                    }
+
+                    
+                }
 
 
            // $myfile = fopen("gästbok.log", "a+") or die("Unable to open file!");
                 if ($myfile = fopen("gästbok.log", "r")) {
-                    while(!feof($myfile)) {
-                        $line = fgets($myfile);
-                        print("<br>");
-                        print($line);
+
+                    $file = file("gästbok.log");
+                    $file = array_reverse($file);
+                    foreach($file as $f){
+                        echo $f."<br />";
                     }
+
                     fclose($myfile);
+                    
                 }
                 
-                //echo fread($myfile,filesize("gästbok.log"));
-                //fclose($myfile);
+                
+
                 ?>
+                
             </form>
 
             <?php

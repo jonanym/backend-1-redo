@@ -107,9 +107,7 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
         
                    $date1 = date('d.m.Y H:i:s', time());
                    $date2 = date('d.m.Y H:i:s', mktime(0,0,0,$manad,$dag,$ar));
-                   //print($date1); 
-                   //print("<br>");
-                   //print($date2);
+                  
                    $diff = abs(strtotime($date2) - strtotime($date1));
                    $years = floor($diff / (365*60*60*24));
                    $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
@@ -119,15 +117,20 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
                    $seconds = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
                    print("<br>");
                    printf("%d år, %d månader, %d dagar, %d timmar, ". "%d minuter, %d sekunder",$years, $months, $days, $hours, $minutes, $seconds);
+                   $datum2 = date_timestamp_get($date2); 
+                   $datum1 = $date1->getTimestamp(); 
+                   echo $datum2;
 
-                   //if($date2.isbefore($date1)){
-                     //  print("<br><br>datumet är i framtiden");
-                   //}
-                   //else{
-                    //   print("<br><br>datumet är i det förflutna");
-                   //}
+                   if($datum2 < $datum1){
+                       echo "<br><br>datumet är i framtiden";
+                   }
+                   else if ($datum2 > $datum1){
+                       echo "<br><br>datumet är i det förflutna";
+                   }
             }
         }
+
+        s
         ?>
 
         </article>
@@ -289,6 +292,7 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
 
      
         ?>
+            </article>
 
             <article>
                 <h2>Uppg 9</h2>
@@ -302,27 +306,28 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
              <?php   
 
              if ($_SERVER['REQUEST_METHOD'] == "POST"){
+                 
                  $comment = $_REQUEST['comment'];
                     if(empty($comment)){
                         print("du måste skriva en kommentar <br>");
+                     
                     }
 
-                    else{
-                         $myfile = fopen("gästbok.log", "a+") or die("Unable to open file!");
+                    else if(!empty($comment)){
+                        $minfil = fopen("gästbok.log", "a+") or die("Unable to open file!");
                         $comment = "Din kommentar: ".$comment;
                         $timestamp = " <br>tidpunkten för din kommentar :". date('H:i:s', );
-                        fwrite($myfile, $comment);
-                        fwrite($myfile, $timestamp."\n");
-                        fclose($myfile);
-                        
+                        fwrite($minfil, $comment);
+                        fwrite($minfil, $timestamp."\n");
+                        fclose($minfil);
                     }
-
-                    
+                    //header('Refresh:1; url=https://cgi.arcada.fi/~nymajona/backend/backend-1-redo/projekt1/index.php');
+                   
                 }
-
+                
 
            // $myfile = fopen("gästbok.log", "a+") or die("Unable to open file!");
-                if ($myfile = fopen("gästbok.log", "r")) {
+                if ($minfil = fopen("gästbok.log", "r")) {
 
                     $file = file("gästbok.log");
                     $file = array_reverse($file);
@@ -330,10 +335,10 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
                         echo $f."<br />";
                     }
 
-                    fclose($myfile);
+                    fclose($minfil);
+                   
                     
                 }
-                
                 
 
                 ?>
@@ -346,7 +351,7 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
             print("<br>");
             print("<br>");
             ?>
-            </article>
+            
 
 
         </article>

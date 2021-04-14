@@ -117,20 +117,22 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
                    $seconds = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
                    print("<br>");
                    printf("%d år, %d månader, %d dagar, %d timmar, ". "%d minuter, %d sekunder",$years, $months, $days, $hours, $minutes, $seconds);
-                   $datum2 = date_timestamp_get($date2); 
-                   $datum1 = $date1->getTimestamp(); 
-                   echo $datum2;
 
-                   if($datum2 < $datum1){
-                       echo "<br><br>datumet är i framtiden";
+                   $dateCustom = mktime(0,0,0,$manad,$dag,$ar);
+                   //print("<br>". $dateCustom);
+                   $dateBasic = mktime(0, 0, 0, date("m")  , date("d"), date("Y"));
+                   //print("<br>". $dateBasic);
+
+                   if($dateCustom > $dateBasic){
+                       print("<p>datumet är framtiden</p>");
                    }
-                   else if ($datum2 > $datum1){
-                       echo "<br><br>datumet är i det förflutna";
+                   else{
+                       print("<p>datumet är i det förflutna</p>");
                    }
             }
         }
 
-        s
+        
         ?>
 
         </article>
@@ -299,7 +301,7 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
 
                 Comment: <br>
 
-                <form action="index.php" method="post">
+                <form action="index.php" method="get">
                 <textarea name="comment" rows="5" cols="40"></textarea><br>
                 <input type="submit" value="Kommentera" name="submit"><br>
 
@@ -320,8 +322,9 @@ print( '<p>Veckonummer: ' . $veckoNummer."</p>");
                         fwrite($minfil, $comment);
                         fwrite($minfil, $timestamp."\n");
                         fclose($minfil);
+                          header('Location: index.php');
                     }
-                    //header('Refresh:1; url=https://cgi.arcada.fi/~nymajona/backend/backend-1-redo/projekt1/index.php');
+                    
                    
                 }
                 
